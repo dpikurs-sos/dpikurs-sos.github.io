@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>SOS Kilkenny - Our History</title>
+    <link rel="icon" type="image/x-icon" href="/sosLogo.png" />
+    <link rel="apple-touch-icon" href="/sosLogo.png" />
+    <link rel="stylesheet" type="text/css" href="Main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+    <!-- Font Awesome for icons (optional) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  </head>
+  <body>
+    <!-- Bootstrap Bundle JS (includes Popper.js) -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script>
+      $(function () {
+        $("#header").load("header.html");
+        $("#footer").load("footer.html");
+      });
+    </script>
+
+    <script>
+       document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide');
+            const thumbnails = document.querySelectorAll('.pager img');
+            const prevBtn = document.querySelector('.arrow.prev');
+            const nextBtn = document.querySelector('.arrow.next');
+            let currentSlide = 0;
+            let autoPlayInterval;
+
+            // Show specific slide
+            function showSlide(index) {
+                if (index < 0) index = slides.length - 1;
+                if (index >= slides.length) index = 0;
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle('active', i === index);
+                });
+                thumbnails.forEach((thumb, i) => {
+                    thumb.classList.toggle('active', i === index);
+                });
+                currentSlide = index;
+                console.log('Current slide:', currentSlide); // Debug
+            }
+
+            // Next slide
+            function nextSlide() {
+                showSlide(currentSlide + 1);
+            }
+
+            // Previous slide
+            function prevSlide() {
+                showSlide(currentSlide - 1);
+            }
+
+            // Autoplay
+            function startAutoPlay() {
+                autoPlayInterval = setInterval(nextSlide, 6000);
+            }
+
+            function stopAutoPlay() {
+                clearInterval(autoPlayInterval);
+            }
+
+            // Event listeners for arrows
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    console.log('Prev button clicked'); // Debug
+                    stopAutoPlay();
+                    prevSlide();
+                    startAutoPlay();
+                });
+            } else {
+                console.error('Previous button not found');
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    console.log('Next button clicked'); // Debug
+                    stopAutoPlay();
+                    nextSlide();
+                    startAutoPlay();
+                });
+            } else {
+                console.error('Next button not found');
+            }
+
+            // Thumbnail event listeners
+            if (thumbnails.length > 0) {
+                thumbnails.forEach(thumb => {
+                    thumb.addEventListener('click', () => {
+                        const index = parseInt(thumb.dataset.slide);
+                        console.log('Thumbnail clicked:', index);
+                        stopAutoPlay();
+                        showSlide(index);
+                        startAutoPlay();
+                    });
+                });
+            } else {
+                console.error('No thumbnails found');
+            }
+
+            // Pause autoplay on hover
+            const container = document.querySelector('.slideshow-container');
+            if (container) {
+                container.addEventListener('mouseenter', stopAutoPlay);
+                container.addEventListener('mouseleave', startAutoPlay);
+
+                // Keyboard navigation
+                container.tabIndex = 0;
+                container.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowLeft') {
+                        console.log('ArrowLeft pressed'); // Debug
+                        stopAutoPlay();
+                        prevSlide();
+                        startAutoPlay();
+                    } else if (e.key === 'ArrowRight') {
+                        console.log('ArrowRight pressed'); // Debug
+                        stopAutoPlay();
+                        nextSlide();
+                        startAutoPlay();
+                    }
+                });
+
+                // Touch swipe support
+                let touchStartX = 0;
+                let touchEndX = 0;
+                container.addEventListener('touchstart', (e) => {
+                    touchStartX = e.changedTouches[0].screenX;
+                });
+                container.addEventListener('touchend', (e) => {
+                    touchEndX = e.changedTouches[0].screenX;
+                    if (touchStartX - touchEndX > 50) {
+                        console.log('Swipe left'); // Debug
+                        nextSlide();
+                        stopAutoPlay();
+                        startAutoPlay();
+                    } else if (touchEndX - touchStartX > 50) {
+                        console.log('Swipe right'); // Debug
+                        prevSlide();
+                        stopAutoPlay();
+                        startAutoPlay();
+                    }
+                });
+            } else {
+                console.error('Slideshow container not found');
+            }
+
+            // Initialize
+            // Initialize
+            if (slides.length > 0 && thumbnails.length > 0) {
+                showSlide(currentSlide);
+                startAutoPlay();
+            } else {
+                console.error('Initialization failed: Slides or thumbnails missing');
+            }
+        });
+    </script>
+
+    <style>
+       .timeline-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 4rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 2rem;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #84e0b8, #0d9488); /* Teal gradient */
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: flex-start;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .timeline-year {
+            position: absolute;
+            left: -60px;
+            width: 60px;
+            height: 60px;
+            background: #fff;
+            border: 3px solid #84e0b8;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #0d9488;
+            z-index: 2;
+            cursor: pointer;
+            transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+        }
+
+        .timeline-content {
+            flex: 1;
+            padding-left: 2rem;
+        }
+
+        .timeline-content p.lead {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+      .slideshow-container {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            height: 800px;
+            margin: 0 auto;
+            border-radius: 10px;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            visibility: hidden; /* Ensure smooth transitions */
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .arrow {
+           position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px; /* Equal width and height for circle */
+            height: 40px;
+            display: flex; /* Center content */
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem; /* Adjusted for circular fit */
+            color: white;
+            background: #0d9488; /* Matches your theme's orange */
+            border: none;
+            cursor: pointer;
+            border-radius: 50%; /* Ensure circular shape */
+            transition: background 0.3s ease, transform 0.3s ease;
+            z-index: 10;
+        }
+
+        .arrow:hover {
+            background: rgba(249, 115, 22, 0.9);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .arrow:focus {
+            outline: 2px solid #fff;
+            outline-offset: 2px;
+        }
+
+        .prev {
+            left: -60px;
+        }
+
+        .next {
+            right: -60px;
+        }
+
+        .pager {
+            position: absolute;
+            bottom: 0px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 5px 10px;
+            border-radius: 8px;
+            z-index: 10;
+        }
+
+        .pager img {
+            width: 60px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 4px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: border 0.3s ease, transform 0.3s ease;
+        }
+
+        .pager img.active {
+            border: 2px solid #f97316; /* Orange border for active thumbnail */
+            transform: scale(1.1);
+        }
+
+        .pager img:hover {
+            border: 2px solid #84e0b8; /* Teal border on hover */
+            transform: scale(1.1);
+        }
+
+        .pager img:focus {
+            outline: 2px solid #fff;
+            outline-offset: 2px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .slideshow-container {
+                height: 300px;
+            }
+            .arrow {
+                font-size: 1.5rem;
+                padding: 8px 12px;
+            }
+            .pager img {
+                width: 50px;
+                height: 33px;
+            }
+            .timeline {
+                padding-left: 0;
+            }
+            .timeline::before {
+                left: 30px;
+            }
+            .timeline-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .timeline-year {
+                position: static;
+                margin-bottom: 1rem;
+            }
+            .timeline-content {
+                padding-left: 2rem;
+            }
+            .timeline-content p.lead {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .slideshow-container {
+                height: 200px;
+            }
+            .arrow {
+                font-size: 1.2rem;
+                padding: 6px 10px;
+            }
+            .pager img {
+                width: 40px;
+                height: 27px;
+            }
+            .timeline-year {
+                width: 50px;
+                height: 50px;
+                font-size: 1rem;
+            }
+            .timeline-content p.lead {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+
+    <div id="header"></div>
+
+    <!-- History Section -->
+    <section id="history" class="py-5">
+      <div class="container">
+        <h2 class="display-5 fw-bold text-center mb-4 text-teal-dark">Our
+          History</h2>
+
+        <div class="timeline-container">
+          <div class="timeline">
+            <div class="timeline-item" data-sr-id="1">
+              <div class="timeline-year" tabindex="0"
+                aria-label="Year 1964">1964</div>
+              <div class="timeline-content">
+                <p class="lead mb-4">
+                  In 1964, <span class="text-teal-dark fw-bold">Dr. Peter
+                    Birch</span> became Bishop of Ossory and soon launched a
+                  ground-breaking initiative to support disadvantaged people in
+                  Kilkenny, known as Kilkenny Social Services. His work was
+                  driven by a strong sense of social justice led by his
+                  Christian beliefs.
+                </p>
+              </div>
+            </div>
+            <div class="timeline-item" data-sr-id="2">
+              <div class="timeline-year" tabindex="0"
+                aria-label="Year 1968">1968</div>
+              <div class="timeline-content">
+                <p class="lead mb-4">
+                  One of Bishop Birch’s key concerns was for people with
+                  intellectual disabilities. In 1968, Bishop Birch gathered a
+                  small team to bring his vision of support for people with
+                  intellectual disabilities in Kilkenny to life. This led to the
+                  formation of SOS Kilkenny. It began modestly, with just one
+                  participant and a part-time staff member in the CYMS Hall on
+                  William Street. Demand quickly grew, prompting the expansion
+                  of the training programmes and facilities.
+                </p>
+              </div>
+            </div>
+            <div class="timeline-item" data-sr-id="3">
+              <div class="timeline-year" tabindex="0"
+                aria-label="Year 1975">1975</div>
+              <div class="timeline-content">
+                <p class="lead mb-4">
+                  In 1975, the group incorporated as SOS Kilkenny Ltd. Bishop
+                  Birch donated land at Seville Lodge, where purpose-built
+                  workshops were developed with help from the South Eastern
+                  Health Board. By the mid-1970s, 12 to 15 people were using the
+                  service, funded through a mix of state support and community
+                  fundraising.
+                </p>
+              </div>
+            </div>
+            <div class="timeline-item" data-sr-id="4">
+              <div class="timeline-year" tabindex="0"
+                aria-label="Year Present">Present</div>
+              <div class="timeline-content">
+                <p class="lead mb-4">
+                  Today, SOS Kilkenny has grown significantly, with over 350
+                  staff supporting 173 individuals in residential, day and
+                  respite services across the city and county. Over the past 50
+                  years, SOS Kilkenny has remained committed to advancing the
+                  vision initiated by Bishop Birch: a society where every person
+                  is recognised, respected, and supported to live a full life as
+                  an equal citizen.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Image Slideshow -->
+
+        <div class="slideshow-container" role="region"
+          aria-label="Image slideshow">
+          <!-- Slides -->
+          <div class="slide active">
+            <img src="Live/VR Photo 1.JPG"
+              alt="Nature landscape">
+          </div>
+          <div class="slide">
+            <img src="Learn/KC Dreamtime.jpg"
+              alt="Lake reflection">
+          </div>
+          <div class="slide">
+            <img src="Live/EOH Community.jpg"
+              alt="City skyline">
+          </div>
+          <div class="slide">
+            <img src="Recruitment/Cmc 1.jpg"
+              alt="Mountain view">
+          </div>
+          <div class="slide">
+            <img src="Learn/Dreamtime Radio 5.JPG"
+              alt="Historic building">
+          </div>
+          <div class="slide">
+            <img src="Work/AMc WeCan.jpg"
+              alt="Ocean waves">
+          </div>
+          <div class="slide">
+            <img src="Work/Conor Tobin Bank of Ireland.jpg"
+              alt="Forest scene">
+          </div>
+          <div class="slide">
+            <img src="Work/RE VHI 3.jpg"
+              alt="Desert dunes">
+          </div>
+          <div class="slide">
+            <img src="Learn/FD.jpg"
+              alt="Countryside path">
+          </div>
+          <div class="slide">
+            <img src="Live/EE 1.jpg"
+              alt="Sky with clouds">
+          </div>
+          <div class="slide">
+            <img src="Live/JF Coffee.jpg"
+              alt="Animal portrait">
+          </div>
+          <div class="slide">
+            <img src="Live/JH sport.jpg"
+              alt="River flow">
+          </div>
+          <div class="slide">
+            <img src="Live/KC TJ Reids.jpg"
+              alt="Sunset glow">
+          </div>
+          <div class="slide">
+            <img src="Live/Hort 1.jpg"
+              alt="Beach scene">
+          </div>
+          <div class="slide">
+            <img src="Learn/RE Podcasting.jpg"
+              alt="City park">
+          </div>
+          <div class="slide">
+            <img src="Live/Power RE.JPG"
+              alt="City park">
+          </div>
+          <div class="slide">
+            <img src="Live/Ardnore 1.jpg"
+              alt="City park">
+          </div>
+          <div class="slide">
+            <img src="Recruitment/CH 2.jpg"
+              alt="City park">
+          </div>
+          <div class="slide">
+            <img src="Work/GH.jpg"
+              alt="City park">
+          </div>
+
+          <!-- Navigation Arrows -->
+          <button class="arrow prev" aria-label="Previous slide">❮</button>
+          <button class="arrow next" aria-label="Next slide">❯</button>
+
+          <div class="pager">
+            <img src="Live/VR Photo 1.JPG" alt="Slide 1" data-slide="0" />
+            <img src="Learn/KC Dreamtime.jpg" alt="Slide 2" data-slide="1" />
+            <img src="Live/EOH Community.jpg" alt="Slide 3" data-slide="2" />
+            <img src="Recruitment/Cmc 1.jpg" alt="Slide 4" data-slide="3" />
+            <img src="Learn/Dreamtime Radio 5.JPG" alt="Slide 5"
+              data-slide="4" />
+            <img src="Work/AMc WeCan.jpg" alt="Slide 6" data-slide="5" />
+            <img src="Work/Conor Tobin Bank of Ireland.jpg" alt="Slide 7"
+              data-slide="6" />
+            <img src="Work/RE VHI 3.jpg" alt="Slide 8" data-slide="7" />
+            <img src="Learn/FD.jpg" alt="Slide 9" data-slide="8" />
+            <img src="Live/EE 1.jpg" alt="Slide 10" data-slide="9" />
+            <img src="Live/JF Coffee.jpg" alt="Slide 11" data-slide="10" />
+            <img src="Live/JH sport.jpg" alt="Slide 12" data-slide="11" />
+            <img src="Live/KC TJ Reids.jpg" alt="Slide 13" data-slide="12" />
+            <img src="Live/Hort 1.jpg" alt="Slide 14" data-slide="13" />
+            <img src="Learn/RE Podcasting.jpg" alt="Slide 15" data-slide="14" />
+            <img src="Live/Power RE.JPG" alt="Slide 16" data-slide="15" />
+            <img src="Live/Ardnore 1.jpg" alt="Slide 17" data-slide="16" />
+            <img src="Recruitment/CH 2.jpg" alt="Slide 18" data-slide="17" />
+            <img src="Work/GH.jpg" alt="Slide 19" data-slide="18" />
+          </div>
+        </div>
+      </section>
+
+      <div id="footer"></div>
+    </body>
+  </html>

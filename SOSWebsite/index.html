@@ -1,0 +1,525 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>SOS Kilkenny</title>
+    <link rel="icon" type="image/x-icon" href="/sosLogo.png" />
+    <link rel="apple-touch-icon" href="/sosLogo.png" />
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    <link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  </head>
+  <body>
+    <!-- Bootstrap Bundle JS (includes Popper.js) -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(function () {
+        $("#header").load("header.html");
+        $("#footer").load("footer.html");
+      });
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const cards = document.querySelectorAll(".card");
+        const learnMoreLinks = document.querySelectorAll(".learn-more");
+        const detailSections = document.querySelectorAll(".detail-section");
+        const closeButtons = document.querySelectorAll(".close-btn");
+        const backdrop = document.querySelector('.detail-backdrop');
+
+        // Open detail section
+        const openDetail = (sectionId) => {
+          const section = document.getElementById(`${sectionId}Detail`);
+          section.classList.add("active");
+          document.querySelector('.detail-backdrop').classList.add('active');
+          document.body.style.overflow = "hidden"; // Prevent scrolling
+        };
+
+        // Close detail section
+        const closeDetail = () => {
+          detailSections.forEach((section) =>
+            section.classList.remove("active")
+          );
+          document.querySelector('.detail-backdrop').classList.remove('active');
+          document.body.style.overflow = ""; // Restore scrolling
+        };
+
+        // Card click event
+        cards.forEach((card) => {
+          card.addEventListener("click", () => {
+            const section = card.dataset.section;
+            openDetail(section);
+          });
+        });
+
+        // Learn more link click event
+        learnMoreLinks.forEach((link) => {
+          link.addEventListener("click", (e) => {
+            e.preventDefault();
+            const section = link.closest(".card").dataset.section;
+            openDetail(section);
+          });
+        });
+
+        // Close button click event
+        closeButtons.forEach((btn) => {
+          btn.addEventListener("click", closeDetail);
+        });
+
+        // Backdrop click event
+        backdrop.addEventListener("click", closeDetail);
+
+        // Close on escape key
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") closeDetail();
+        });
+      });
+    </script>
+
+    <div id="header"></div>
+
+    <!-- Hero Section -->
+    <section
+      id="hero"
+      class="hero-section parallax-effect text-white text-center py-5 position-relative">
+      <div
+        class="hero-overlay d-flex flex-column justify-content-center h-100 py-5">
+        <div class="container bg-black bg-opacity-50 px-4 py-5 rounded">
+          <h2 class="display-4 fw-bold mb-4 animate__animated animate__fadeIn">
+            Welcome to SOS Kilkenny
+          </h2>
+          <p class="lead mb-5 mx-auto" style="max-width: 600px">
+            Supporting adults with intellectual disabilities and autism in
+            Kilkenny City and County.
+          </p>
+          <a
+            href="index.html#supports"
+            class="btn btn-outline-warning rounded-pill btn-lg">Explore
+            Supports</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5 bg-light">
+      <div class="container">
+        <!-- Section Header -->
+        <h2
+          class="display-5 fw-bold text-center mb-5 text-teal-dark">
+          About SOS Kilkenny
+        </h2>
+
+        <!-- Intro Row with Image -->
+        <div class="row align-items-center mb-5">
+          <div class="col-lg-6">
+            <div class="text-center">
+              <h3 class="display-10 fw-bold mb-3 text-teal-dark">Values
+                Statement</h3>
+              <p class="lead mb-4" style="font-style: italic;">
+                We all want the same thing:
+                to be fulfilled,
+                to make a positive impact,
+                to be appreciated for who we are.<br>
+                By being informed and by making bold decisions,
+                SOS Kilkenny will hold people up, not hold them back.<br><br>
+                Our Values Statement is inspired by the values of dignity,
+                diversity, inclusion and self-determination.
+              </p>
+            </div>
+            <p class="lead mb-4">
+              SOS Kilkenny is a trusted provider of supports for adults with
+              intellectual disabilities and autism in Kilkenny City and County.
+              Our dedicated team is committed to excellence, collaboration, and
+              making a meaningful difference.
+            </p>
+          </div>
+          <div class="col-lg-6">
+            <img
+              src="Recruitment/Eileen Egars and Larry Keogh.jpg"
+              class="img-fluid rounded shadow about-img"
+              alt="A group of people engaging in a community activity supported by SOS Kilkenny" />
+          </div>
+        </div>
+
+        <!-- Vision, Purpose, Values Cards -->
+        <div class="row g-4">
+          <!-- Vision Card -->
+          <div class="col-lg-4">
+            <div class="card h-100 border-0 shadow-sm">
+              <img
+                src="Learn/Photography 2.JPG"
+                class="card-img-top"
+                alt="People of diverse abilities collaborating in an inclusive setting" />
+              <div class="card-body">
+                <h3 class="card-title h5 fw-bold mb-2">Our Vision</h3>
+                <p class="card-text">
+                  A society that celebrates differences, where people of all
+                  abilities live, work, and learn as equals.
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- Purpose Card -->
+          <div class="col-lg-4">
+            <div class="card h-100 border-0 shadow-sm">
+              <img
+                src="Recruitment/CH 2.jpg"
+                class="card-img-top"
+                alt="An individual being supported to achieve their personal goals" />
+              <div class="card-body">
+                <h3 class="card-title h5 fw-bold mb-2">Our Purpose</h3>
+                <p class="card-text">
+                  To support individuals with dignity and respect, empowering
+                  them to develop their abilities, connect with others, and lead
+                  a life of their choosing.
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- Values Card -->
+          <div class="col-lg-4">
+            <div class="card h-100 border-0 shadow-sm">
+              <img
+                src="Recruitment/Cmc 1.jpg"
+                class="card-img-top"
+                alt="A team demonstrating values of inclusion and respect" />
+              <div class="card-body">
+                <h3 class="card-title h5 fw-bold mb-2">Our Values</h3>
+                <p class="card-text">
+                  Inspired by dignity, diversity, inclusion, and
+                  self-determination, we aim to uplift and empower, fostering
+                  fulfillment and positive impact.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="text-center mt-5">
+          <a href="our-history.html"
+            class="btn btn-warning rounded-pill btn-lg"><i
+              class="fa-solid fa-landmark-dome"></i> Learn More About Our
+            History</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Supports Section -->
+    <div id="supports" class="py-5">
+      <div class="container">
+        <h2 class="display-5 fw-bold text-center mb-4 text-teal-dark">Our
+          Supports</h2>
+        <p class="lead mb-4">
+          SOS Kilkenny offers a broad range of person-centred supports across
+          Kilkenny City and County, supporting people to lead meaningful and
+          connected lives. We provide community living options, short breaks
+          away from home, and a variety of purposeful daytime supports.
+        </p>
+        <p class="lead mb-4">
+          Currently, we support people to live in homes in neighbourhoods across
+          Kilkenny. Our community-based day locations offer opportunities for
+          personal development, lifelong learning, social connection, and
+          employment preparation for people at all stages of life.
+        </p>
+        <p class="lead">
+          Additionally, we operate a part-time short-break service in Kilkenny
+          City, offering individuals the chance to experience increased
+          independence and to build new skills and relationships in a supportive
+          and welcoming environment
+        </p>
+
+        <p class="mb-4 text-center mt-5 fw-bold text-teal-dark">
+          Click on the cards below to learn more about each support area.
+        </p>
+      </div>
+    </div>
+
+    <!-- Live / Learn / Work Cards -->
+    <section id="supportsCards" class="py-5">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <div
+              class="card bg-teal-light shadow-lg border-0 cursor-hover"
+              data-section="live">
+              <img
+                src="Live/Jm and DK.jpg"
+                class="card-img-top rounded"
+                alt="Live" />
+              <div class="card-body">
+                <h3 class="card-title h5 fw-bold mb-2">Live </h3>
+                <p class="card-text">
+                  We support people in homes based in different neighbourhoods
+                  throughout Kilkenny City and County, including community
+                  engagement at The Junction, The Lighthouse, and Deenview.
+                </p>
+                <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div
+              class="card bg-cyan-light shadow-lg border-0 cursor-hover"
+              data-section="learn">
+              <img
+                src="Learn/Dreamtime Radio 5.JPG"
+                class="card-img-top rounded"
+                alt="Learn" />
+              <div class="card-body">
+                <h3 class="card-title h5 fw-bold mb-2">Learn</h3>
+                <p class="card-text">
+                  Our programs like The Access Academy, Dreamtime Studio Hub,
+                  and The Pod Training Café offer education and skills for
+                  personal and professional growth.
+                </p>
+                <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div
+              class="card bg-orange-light shadow-lg border-0 cursor-hover"
+              data-section="work">
+              <img
+                src="Work/DB Starbucks 3.JPG"
+                class="card-img-top rounded"
+                alt="Work" />
+              <div class="card-body">
+                <h3 class="card-title h5 fw-bold mb-2">Work</h3>
+                <p class="card-text">
+                  Through Work4Life, we help jobseekers find and sustain
+                  meaningful employment in inclusive settings.
+                </p>
+                <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="detail-backdrop"></div>
+
+    <!-- Detailed Sections for Cards -->
+    <div id="liveDetail" class="detail-section">
+      <span class="close-btn">&times;</span>
+      <div class="detail-content">
+        <div class="container">
+          <h2
+            class="display-5 fw-bold text-center mb-4 text-teal-dark">Live</h2>
+          <p class="lead mb-4">
+            We all need different supports at different times in our lives so
+            that we can live well.
+          </p>
+          <p class="lead mb-4">
+            In SOS Kilkenny, we support people in homes based in different
+            neighbourhoods throughout Kilkenny City and County.
+          </p>
+          <p class="lead mb-4">
+            We support people to be part of the everyday life of the local
+            community.
+          </p>
+          <p class="lead mb-4">
+            <strong><span class="text-teal-dark">Junction:</span> </strong> The
+            Junction is the base for our
+            community engagement programme, supporting people to use community
+            facilities, for example gyms, restaurants, cafes and the public bus.
+          </p>
+          <p class="lead mb-4">
+            <strong><span class="text-teal-dark">The Lighthouse:</span></strong>
+            The Lighthouse is our inclusive
+            community centre for older adults supported by SOS Kilkenny and
+            older adults from the local community. The Lighthouse hosts the
+            Lighthouse Dementia Café on the first Tuesday for every month.
+          </p>
+          <p class="lead mb-4">
+            <strong><span class="text-teal-dark">Deenview:</span></strong>
+            Deenview provides support to people from
+            Castlecomer and its surrounds to live their lives in their local
+            area through community engagement, employment and relationship
+            building.
+          </p>
+          <p class="lead mb-4">
+            We promote wellbeing among the people we support in SOS Kilkenny
+            offering opportunities to enjoy the creative and performing arts,
+            horticulture, sport and fitness and culinary skills.
+          </p>
+          <p class="lead">We also provide short breaks from home for people.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="learnDetail" class="detail-section">
+      <span class="close-btn">&times;</span>
+      <div class="detail-content">
+        <div class="container">
+          <h2
+            class="display-5 fw-bold text-center mb-4 text-teal-dark">Learn</h2>
+          <p class="lead mb-4">
+            In SOS Kilkenny, we believe in giving people the skills and tools to
+            achieve their ambitions. We provide different learning opportunities
+            for people, depending on their needs, interests and goals and
+            encourage people to develop their confidence, skills and experience.
+          </p>
+          <p class="lead mb-4">
+            <strong><span class="text-teal-dark">The Access
+                Academy:</span></strong> A bespoke education programme
+            teaching students the skills and knowledge to be successful in the
+            workplace.
+          </p>
+          <p class="lead mb-4">
+            <strong><span class="text-teal-dark">Dreamtime Studio
+                Hub:</span></strong> Home of Dreamtime Radio,
+            Ireland’s only BAI licensed radio station where all of the
+            presenters and content creators are people with intellectual
+            disabilities, Dreamtime Studio Hub is SOS Kilkenny’s media centre
+            teaching broadcasting, podcasting and photography to students.
+          </p>
+          <p class="lead">
+            <strong><span class="text-teal-dark">The Pod Training
+                Café:</span></strong> The Pod is our training café
+            teaching practical skills to work in the hospitality industry,
+            including barista, customer service and till use.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div id="workDetail" class="detail-section">
+      <span class="close-btn">&times;</span>
+      <div class="detail-content">
+        <div class="container">
+          <h2
+            class="display-5 fw-bold text-center mb-4 text-teal-dark">Work</h2>
+          <p class="lead mb-4">
+            Work4Life supports jobseekers from SOS Kilkenny to find, maintain
+            and progress in paid, meaningful employment. Work4Life is co-funded
+            by the Government of Ireland and the European Union. For more
+            information on Work4Life, visit
+            <a href="http://www.work4life.ie">www.work4life.ie</a>
+          </p>
+
+          <img src="work4life.svg" style="height: 15rem; width: auto;"
+            class="img-fluid rounded mb-4"
+            alt="Work4Life Logo" />
+
+          <img src="work4lifefunders.png" style="height: 5rem; width: auto;"
+            class="img-fluid rounded mb-4 mx-auto"
+            alt="Work4Life Funders" />
+        </div>
+      </div>
+    </div>
+
+    <section
+      id="radio"
+      class="parallax-effect text-center"
+      style="
+        background-image: url('Learn/Dreamtime Radio 6.JPG');
+        height: 60rem;
+      ">
+      <div
+        class="bg-black bg-opacity-50 p-4 rounded d-flex justify-content-center align-items-center h-100">
+        <div class="text-center mt-5">
+          <h2 class="text-3xl font-bold text-white">Dreamtime Radio</h2>
+          <p class="mt-2 text-white">
+            Listen Live to Ireland’s only BAI licensed radio station where all
+            presenters are people with intellectual disabilities.
+          </p>
+          <div class="d-flex justify-content-center">
+            <iframe
+              height="800px"
+              width="400px"
+              scrolling="yes"
+              frameborder="0"
+              src="https://dreamtimeradio.airtime.pro/embed/weekly-program"></iframe>
+            <iframe
+              id="embed_player"
+              frameborder="0"
+              width="350"
+              height="396"
+              src="https://dreamtimeradio.airtime.pro/embed/player?stream=auto&skin=2"></iframe>
+
+            <div>
+              <a
+                href="/Docs/Dreamtime Radio Code of Practice for Complaints Handling.odt"
+                class="btn btn-secondary btn-sm rounded-pill ms-3"
+                target="_blank">
+                <i class="fas fa-file-alt"></i> Download Code of Practice
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Environmental Sustainability Section -->
+    <section id="sustainability" class="py-5 bg-white">
+      <div class="container">
+        <h2 class="display-5 fw-bold text-center mb-4 text-teal-dark">
+          Environmental Sustainability
+        </h2>
+        <p class="lead">
+          We are committed to sustainable practices to protect our
+          environment.
+          Learn more about our initiatives on our
+          <a
+            href="environmental-sustainability.html"
+            class="text-teal-dark text-decoration-underline">Environmental
+            Sustainability page</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 bg-white">
+      <div class="container">
+        <h2 class="display-5 fw-bold text-center mb-4 text-teal-dark">Contact
+          Us</h2>
+        <p class="lead text-center">
+          Get in touch with us to learn more about our services or to get
+          involved.
+        </p>
+        <div class="text-center mt-4">
+          <a
+            href="mailto:soskilkenny.com"
+            class="btn btn-warning btn-lg rounded-pill">
+            <i class="fas fa-envelope"></i> Email Us
+          </a>
+
+          <div class="d-flex justify-content-center mt-4">
+            <a class="nav-social"
+              href="https://www.facebook.com/SOSKilkennyCLG#" target="_blank">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a class="nav-social"
+              href="https://ie.linkedin.com/company/sos-kilkenny-clg"
+              target="_blank">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a
+              class="nav-social"
+              href="https://www.instagram.com/soskilkenny/?hl=en"
+              target="_blank">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="footer"></div>
+
+    <script>
+      ScrollReveal().reveal("section", {
+        delay: 400,
+        distance: "50px",
+        origin: "bottom",
+        duration: 1000,
+      });
+    </script>
+  </body>
+</html>

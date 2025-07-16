@@ -1,0 +1,468 @@
+﻿:root {
+    --primary-color: #84e0b8;
+    --secondary-color: #333;
+    --accent-color: #e08400;
+    --text-color: #fff;
+    --background-color: #f4f4f4;
+}
+
+
+body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer {
+    position: relative;
+    width: 100vw;
+    background-color: #333;
+    padding: 0.5em;
+    bottom: 0;
+    bottom: 0;
+    border-top: 5px solid;
+    border-color: var(--primary-color);
+}
+
+.hero-section {
+    background-image: url('collage.png');
+    min-height: 80vh !important;
+    max-height: 1000px;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.detail-backdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.detail-backdrop.active {
+    display: block;
+}
+
+.detail-section {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(100%, -50%);
+    /* Start off-screen to the right */
+    width: 90%;
+    max-width: 1200px;
+    height: auto;
+    max-height: 80vh;
+    background: white;
+    z-index: 1001;
+    overflow-y: auto;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    /* Animate opacity and transform */
+    opacity: 0;
+    /* Invisible initially */
+    visibility: hidden;
+    /* Hide without removing from render tree */
+}
+
+.detail-section.active {
+    transform: translate(-50%, -50%);
+    /* Slide to center */
+    opacity: 1;
+    /* Fully visible */
+    visibility: visible;
+    /* Show the element */
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #333;
+}
+
+.detail-content {
+    padding: 40px 20px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.userway_buttons_wrapper {
+    margin-top: 15rem;
+}
+
+.wave {
+    background: linear-gradient(45deg, #0d9488, #06b6d4);
+}
+
+.about-img:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+}
+
+.parallax-effect {
+    background-attachment: fixed !important;
+    background-size: cover;
+    background-position: center;
+    background-repeat: inherit;
+    overflow-y: auto;
+    height: 100vh;
+    transform: none !important;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s;
+}
+
+.text-teal-dark {
+    color: #0d9488;
+}
+
+.nav-social {
+    display: block;
+    padding: 10px 10px;
+    color: black;
+    font-size: 28px;
+}
+
+.nav-social:hover {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 991.98px) {
+    .parallax-effect {
+        background-position: center !important;
+        background-size: auto;
+    }
+
+    .hero-section {
+        background-size: cover;
+        min-height: 100vh !important;
+    }
+
+    .about-img {
+        margin-bottom: 1.5rem;
+    }
+}
+
+.cursor-hover:hover {
+    cursor: pointer;
+}
+
+.listen-live-btn {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 1000;
+
+}
+
+
+/*------------------------------------*\
+    HEADER/START
+\*------------------------------------*/
+
+header {
+    width: 100%;
+    color: white;
+    text-align: center;
+    padding: 0.5em;
+    border-bottom: 5px solid;
+    border-color: var(--primary-color);
+}
+
+.nav-main,
+a {
+    font-family: Arial, sans-serif;
+    color: white;
+    text-decoration: none;
+    margin: 0 1em;
+}
+
+.logo {
+    margin-left: 2rem;
+    display: inline-block;
+    width: 145px;
+    height: auto;
+    background-size: cover;
+    vertical-align: middle;
+}
+
+.border-right {
+    border: 2px solid var(--primary-color);
+    border-top: none;
+    border-bottom: none;
+    border-left: none;
+}
+
+@media (max-width: 991.98px) {
+    .logo {
+        margin-left: 0;
+        width: 200px !important;
+        height: auto;
+    }
+
+    .nav-item.border-right {
+        border-right: none !important;
+    }
+
+    .nav-main {
+        font-size: 30px !important;
+    }
+
+    .about-us-dropdown {
+        display: none !important;
+    }
+
+    .about-us-dropdown {
+        display: none !important;
+    }
+
+    .donate-btn {
+        margin-bottom: 1rem;
+        width: 15rem !important;
+    }
+}
+
+.navbar-brand {
+    margin-left: 5rem;
+    padding: 0 !important;
+}
+
+/* Hover effect for dropdown */
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.dropdown-menu {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    margin-top: 0;
+}
+
+/* Ensure dropdown stays open when hovering over the menu itself */
+.dropdown-menu:hover {
+    opacity: 1;
+    visibility: visible;
+}
+
+.navbar {
+    width: 100%;
+    padding: 0 !important;
+}
+
+#navbarCollapse {
+    margin-left: auto;
+}
+
+.donate-btn {
+    width: 10rem;
+}
+
+/* Hamburger nav animation */
+.navbar-toggler {
+    border: none !important;
+    border-radius: 0;
+    margin: 3px 0 0;
+    outline: none;
+    width: 62px;
+    height: 43px;
+    position: relative;
+    transform: rotate(0deg);
+    transition: 0.25s ease-in-out;
+    cursor: pointer;
+    z-index: 99999;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none !important;
+}
+
+.navbar-toggler .icon-bar {
+    display: block;
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background: var(--accent-color);
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: 0.25s ease-in-out;
+}
+
+.navbar-toggler .icon-bar:nth-child(2) {
+    top: 0px;
+}
+
+.navbar-toggler .icon-bar:nth-child(3) {
+    top: 15px;
+}
+
+.navbar-toggler .icon-bar:nth-child(4) {
+    top: 30px;
+}
+
+.navbar-toggler:not(.collapsed) .icon-bar {
+    background: var(--accent-color);
+}
+
+.navbar-toggler:not(.collapsed) .icon-bar:nth-child(2) {
+    top: 11px;
+    transform: rotate(135deg);
+}
+
+.navbar-toggler:not(.collapsed) .icon-bar:nth-child(3) {
+    opacity: 0;
+    right: -40px;
+}
+
+.navbar-toggler:not(.collapsed) .icon-bar:nth-child(4) {
+    top: 11px;
+    transform: rotate(-135deg);
+}
+
+.nav-main {
+    display: block;
+    padding: 10px 10px;
+    font-size: 18px;
+    color: #6c757d;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.nav-main:hover {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.navbar-nav .nav-link {
+    font-size: 18px;
+}
+
+.navbar-collapse {
+    float: left;
+    width: 100%;
+    clear: both;
+}
+
+button:focus {
+    outline: 1px dotted;
+    outline: 2px auto white;
+}
+
+.dropdown-toggle {
+    padding: 10px 14px !important;
+    transition: all 0.3s ease;
+}
+
+.dropdown-toggle:hover {
+    color: var(--primary-color) !important;
+}
+
+.dropdown-toggle:focus {
+    outline: 0px !important;
+    -webkit-appearance: none;
+    box-shadow: none !important;
+}
+
+.dropdown-toggle svg {
+    transition: 0.24s;
+}
+
+.nav-item.dropdown:last-child .dropdown-toggle {
+    padding: 10px 3px 10px 14px !important;
+}
+
+.dropdown-toggle[aria-expanded="true"] {
+    color: var(--primary-color) !important;
+}
+
+.dropdown-toggle[aria-expanded="true"] svg {
+    transform: rotateX(180deg);
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+.dropdown-menu {
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: .24s ease-out all;
+    background-color: #1a2b3c;
+    border-radius: 0;
+    top: 65px;
+    left: 0px;
+    border: none;
+    width: 240px;
+}
+
+.dropdown-menu:after {
+    content: " ";
+    background-color: #1a2b3c;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    height: 25px;
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    width: 100%;
+}
+
+.dropdown-menu a {
+    font-size: 16px;
+    color: #6c757d;
+    word-wrap: break-word;
+    white-space: normal !important;
+}
+
+.dropdown-menu a:hover {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.dropdown-menu .dropdown-item:hover,
+.dropdown-menu .dropdown-item:focus {
+    background-color: transparent;
+}
+
+.dropdown-menu.dropdown-menu-right {
+    left: auto;
+    right: 0;
+}
+
+.dropdown-menu.show {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0px);
+    transition: .24s ease-out all;
+}
+
+/*------------------------------------*\
+    HEADER/END
+\*------------------------------------*/
