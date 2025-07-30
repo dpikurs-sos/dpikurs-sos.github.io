@@ -202,11 +202,8 @@ body {
     }
 
     .hero-section {
-        background-size: contain !important;
-        background-position: center !important;
-        background-repeat: no-repeat !important;
+        background-size: cover;
         min-height: 100vh !important;
-        /* background-color: #333 !important; */
     }
 
     .about-img {
