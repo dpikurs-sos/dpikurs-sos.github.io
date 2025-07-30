@@ -161,6 +161,14 @@ body {
     .about-img {
         margin-bottom: 1.5rem;
     }
+
+    /* Larger Listen Live button on mobile */
+    .listen-live-btn {
+        font-size: 18px !important;
+        padding: 15px 25px !important;
+        bottom: 1.5rem;
+        right: 1.5rem;
+    }
 }
 
 .cursor-hover:hover {
@@ -216,7 +224,7 @@ a {
 @media (max-width: 991.98px) {
     .logo {
         margin-left: 0;
-        width: 200px !important;
+        width: 220px !important;
         height: auto;
     }
 
@@ -225,11 +233,8 @@ a {
     }
 
     .nav-main {
-        font-size: 30px !important;
-    }
-
-    .about-us-dropdown {
-        display: none !important;
+        font-size: 24px !important;
+        padding: 15px 15px !important;
     }
 
     .about-us-dropdown {
@@ -238,7 +243,9 @@ a {
 
     .donate-btn {
         margin-bottom: 1rem;
-        width: 15rem !important;
+        width: 18rem !important;
+        font-size: 20px !important;
+        padding: 12px 20px !important;
     }
 }
 
