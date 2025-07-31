@@ -215,46 +215,39 @@ body {
 
     /* Larger Listen Live button on mobile */
     .listen-live-btn {
-        font-size: 28px !important;
-        padding: 25px 40px !important;
+        font-size: 24px !important;
+        padding: 20px 35px !important;
         bottom: 2rem;
         right: 2rem;
     }
 
-    /* Enhanced text sizes for mobile - making everything larger */
+    /* Improved text sizes for mobile */
     body {
-        font-size: 24px !important;
-        line-height: 1.7 !important;
+        font-size: 28px !important;
     }
 
     h1, .h1 {
         font-size: 4rem !important;
-        line-height: 1.3 !important;
     }
 
     h2, .h2 {
         font-size: 3.5rem !important;
-        line-height: 1.4 !important;
     }
 
     h3, .h3 {
         font-size: 3rem !important;
-        line-height: 1.4 !important;
     }
 
     h4, .h4 {
-        font-size: 2.75rem !important;
-        line-height: 1.5 !important;
+        font-size: 2.5rem !important;
     }
 
     h5, .h5 {
-        font-size: 2.5rem !important;
-        line-height: 1.5 !important;
+        font-size: 2rem !important;
     }
 
     h6, .h6 {
-        font-size: 2.25rem !important;
-        line-height: 1.6 !important;
+        font-size: 1.75rem !important;
     }
 
     .lead {
@@ -268,8 +261,7 @@ body {
     }
 
     .card-title {
-        font-size: 2rem !important;
-        line-height: 1.4 !important;
+        font-size: 1.7rem !important;
     }
 
     p {
@@ -278,7 +270,7 @@ body {
     }
 
     .display-1 {
-        font-size: 5rem !important;
+        font-size: 4.5rem !important;
     }
 
     .display-2 {
@@ -286,111 +278,19 @@ body {
     }
 
     .display-3 {
-        font-size: 4rem !important;
-    }
-
-    .display-4 {
         font-size: 3.5rem !important;
     }
 
-    .display-5 {
+    .display-4 {
         font-size: 3rem !important;
     }
 
-    .display-6 {
+    .display-5 {
         font-size: 2.75rem !important;
     }
 
-    /* Additional text elements for better mobile readability */
-    .text-muted {
-        font-size: 1.6rem !important;
-    }
-
-    .small, small {
-        font-size: 1.4rem !important;
-    }
-
-    .text-center {
-        font-size: inherit !important;
-    }
-
-    /* Button text sizes */
-    .btn {
-        font-size: 1.8rem !important;
-        padding: 12px 24px !important;
-    }
-
-    .btn-lg {
-        font-size: 2rem !important;
-        padding: 15px 30px !important;
-    }
-
-    .btn-sm {
-        font-size: 1.6rem !important;
-        padding: 8px 16px !important;
-    }
-
-    /* Form elements */
-    input, textarea, select {
-        font-size: 1.7rem !important;
-        padding: 12px !important;
-    }
-
-    /* List items */
-    li {
-        font-size: 1.7rem !important;
-        line-height: 1.7 !important;
-    }
-
-    /* Table text */
-    table {
-        font-size: 1.6rem !important;
-    }
-
-    th, td {
-        font-size: 1.6rem !important;
-        padding: 12px 8px !important;
-    }
-
-    /* Blockquote */
-    blockquote {
-        font-size: 1.8rem !important;
-        line-height: 1.7 !important;
-    }
-
-    /* Code elements */
-    code, pre {
-        font-size: 1.5rem !important;
-    }
-
-    /* Alert messages */
-    .alert {
-        font-size: 1.7rem !important;
-        padding: 15px !important;
-    }
-
-    /* Badge and label text */
-    .badge {
-        font-size: 1.4rem !important;
-    }
-
-    /* Modal text */
-    .modal-title {
+    .display-6 {
         font-size: 2.5rem !important;
-    }
-
-    .modal-body {
-        font-size: 1.7rem !important;
-    }
-
-    /* Tooltip text */
-    .tooltip {
-        font-size: 1.5rem !important;
-    }
-
-    /* Any remaining text elements */
-    * {
-        font-size: inherit;
     }
 }
 
