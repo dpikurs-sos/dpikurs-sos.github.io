@@ -78,6 +78,10 @@ body {
     background-image: url('collage.png');
     min-height: 80vh !important;
     max-height: 1000px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    
 }
 
 .hero-overlay {
