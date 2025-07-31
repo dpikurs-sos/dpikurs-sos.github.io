@@ -422,7 +422,6 @@ section.py-5 {
     background-attachment: fixed !important;
     background-size: cover;
     background-position: center;
-    background-repeat: inherit;
     overflow-y: hidden;
     height: 100vh;
     transform: none !important;
@@ -738,6 +737,10 @@ button:focus {
 
     .hero-section {
         max-height: 50vh !important;
+        background-repeat: no-repeat !important;
+        background-size: cover !important;
+        background-position: center !important;
+        background-attachment: scroll !important;
     }
 
     .about-img {
