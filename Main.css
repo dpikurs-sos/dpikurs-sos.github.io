@@ -205,6 +205,16 @@ body {
         max-height: 50vh !important;
     }
 
+    /* Radio section mobile optimization - same as hero-section */
+    #radio {
+        background-size: contain !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        min-height: 100vh !important;
+        max-height: 50vh !important;
+        background-color: #333 !important;
+    }
+
     .about-img {
         margin-bottom: 1.5rem;
     }
