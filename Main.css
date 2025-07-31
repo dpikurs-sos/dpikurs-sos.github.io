@@ -207,7 +207,7 @@ body {
 
     /* Radio section mobile optimization - same as hero-section */
     #radio {
-        background-size: auto !important;
+        background-size: cover !important;
         background-position: center !important;
         background-repeat: no-repeat !important;
         min-height: 100vh !important;
