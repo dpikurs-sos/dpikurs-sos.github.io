@@ -4,28 +4,278 @@
     --accent-color: #e08400;
     --text-color: #fff;
     --background-color: #f4f4f4;
+    --gradient-primary: linear-gradient(135deg, #84e0b8 0%, #0d9488 100%);
+    --gradient-secondary: linear-gradient(135deg, #e08400 0%, #f59e0b 100%);
+    --shadow-light: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.15);
+    --shadow-heavy: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
-
+/* Enhanced Typography */
 body {
     overflow-x: hidden;
     overflow-y: auto;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Inter', 'Segoe UI', 'Arial', sans-serif;
     display: flex;
     flex-direction: column;
     font-size: 16px;
     line-height: 1.6;
+    color: #2d3748;
 }
 
+/* Modern Section Styling */
+section {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+/* Fix spacing issues */
+#about {
+    margin-top: 0;
+    padding-top: 3rem;
+}
+
+#supports {
+    margin-top: 0;
+    padding-top: 3rem;
+}
+
+#supportsCards {
+    margin-top: 0;
+    padding-top: 3rem;
+}
+
+/* Fix hero section spacing */
+.hero-section {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Fix section overlap */
+section {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+section.py-5 {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+}
+
+/* Enhanced Card Styling */
+.card {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    border-radius: 16px;
+    box-shadow: var(--shadow-light);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: none;
+    overflow: hidden;
+    position: relative;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: var(--shadow-heavy);
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.card:hover::before {
+    left: 100%;
+}
+
+.card-img-top {
+    transition: transform 0.4s ease;
+    border-radius: 16px 16px 0 0;
+}
+
+.card:hover .card-img-top {
+    transform: scale(1.1);
+}
+
+.card-body {
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+    padding: 1.5rem;
+}
+
+.card-title {
+    font-weight: 700;
+}
+
+/* Enhanced Button Styling */
+.btn {
+    border-radius: 50px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    font-size: 0.875rem;
+    padding: 12px 24px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    border: none;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+
+
+/* Enhanced Navigation */
+.nav-main {
+    position: relative;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.nav-main::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-primary);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-main:hover::after {
+    width: 100%;
+}
+
+.nav-social {
+    display: block;
+    padding: 10px 10px;
+    color: black;
+    font-size: 28px;
+    transition: all 0.3s ease;
+}
+
+.nav-social:hover {
+    color: var(--primary-color);
+    text-decoration: none;
+    transform: translateY(-2px);
+}
+
+/* Hero Section */
+.hero-section {
+    background-image: url('collage.png');
+    min-height: 80vh !important;
+    max-height: 1000px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Enhanced Detail Section */
+.detail-section {
+    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    box-shadow: var(--shadow-heavy);
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #333;
+}
+
+.close-btn:hover {
+    transform: scale(1.2);
+}
+
+/* Radio Section - Non-scrollable */
+#radio {
+    overflow: hidden !important;
+}
+
+#radio iframe {
+    overflow: hidden !important;
+}
+
+/* Enhanced Footer */
+.footer {
+    background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+    border-top: 5px solid;
+    border-image: var(--gradient-primary) 1;
+}
+
+/* Loading States */
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid var(--primary-color);
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Footer Styles */
 .footer {
     position: relative;
     width: 100vw;
-    background-color: #333;
+    background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
     padding: 0.5em;
     bottom: 0;
-    bottom: 0;
     border-top: 5px solid;
-    border-color: var(--primary-color);
+    border-image: var(--gradient-primary) 1;
 }
 
 /* Footer mobile improvements */
@@ -74,6 +324,7 @@ body {
     }
 }
 
+/* Hero Section */
 .hero-section {
     background-image: url('collage.png');
     min-height: 80vh !important;
@@ -81,7 +332,6 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    
 }
 
 .hero-overlay {
@@ -92,6 +342,7 @@ body {
     height: 100%;
 }
 
+/* Detail Section Styles */
 .detail-backdrop {
     display: none;
     position: fixed;
@@ -112,31 +363,21 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(100%, -50%);
-    /* Start off-screen to the right */
     width: 90%;
     max-width: 1200px;
     height: auto;
     max-height: 80vh;
-    background: white;
     z-index: 1001;
     overflow-y: auto;
-    border-radius: 8px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     transition: opacity 0.3s ease, transform 0.3s ease;
-    /* Animate opacity and transform */
     opacity: 0;
-    /* Invisible initially */
     visibility: hidden;
-    /* Hide without removing from render tree */
 }
 
 .detail-section.active {
     transform: translate(-50%, -50%);
-    /* Slide to center */
     opacity: 1;
-    /* Fully visible */
     visibility: visible;
-    /* Show the element */
 }
 
 .close-btn {
@@ -154,6 +395,7 @@ body {
     margin: 0 auto;
 }
 
+/* Utility Classes */
 .userway_buttons_wrapper {
     margin-top: 15rem;
 }
@@ -177,136 +419,8 @@ body {
     transform: none !important;
 }
 
-.card:hover {
-    transform: scale(1.05);
-    transition: transform 0.3s;
-}
-
 .text-teal-dark {
-    color: #0d9488;
-}
-
-.nav-social {
-    display: block;
-    padding: 10px 10px;
-    color: black;
-    font-size: 28px;
-}
-
-.nav-social:hover {
-    color: var(--primary-color);
-    text-decoration: none;
-}
-
-/* Radio Section - Non-scrollable */
-#radio {
-    overflow: hidden !important;
-}
-
-#radio iframe {
-    overflow: hidden !important;
-}
-
-/* Mobile Adjustments */
-@media (max-width: 991.98px) {
-    .parallax-effect {
-        background-position: center !important;
-        background-size: auto;
-    }
-
-    .hero-section {
-        max-height: 50vh !important;
-        width: 100vw !important;
-        position: relative;
-        left: 50%;
-        right: 50%;
-        margin-left: -50vw;
-        margin-right: -50vw;
-    }
-
-    .about-img {
-        margin-bottom: 1.5rem;
-    }
-
-    /* Larger Listen Live button on mobile */
-    .listen-live-btn {
-        font-size: 24px !important;
-        padding: 20px 35px !important;
-        bottom: 2rem;
-        right: 2rem;
-    }
-
-    /* Improved text sizes for mobile */
-    body {
-        font-size: 32px !important;
-    }
-
-    h1, .h1 {
-        font-size: 4.5rem !important;
-    }
-
-    h2, .h2 {
-        font-size: 4rem !important;
-    }
-
-    h3, .h3 {
-        font-size: 3.5rem !important;
-    }
-
-    h4, .h4 {
-        font-size: 3rem !important;
-    }
-
-    h5, .h5 {
-        font-size: 2.5rem !important;
-    }
-
-    h6, .h6 {
-        font-size: 2rem !important;
-    }
-
-    .lead {
-        font-size: 2.5rem !important;
-        line-height: 1.8 !important;
-    }
-
-    .card-text {
-        font-size: 2rem !important;
-        line-height: 1.7 !important;
-    }
-
-    .card-title {
-        font-size: 2rem !important;
-    }
-
-    p {
-        font-size: 2rem !important;
-        line-height: 1.7 !important;
-    }
-
-    .display-1 {
-        font-size: 5rem !important;
-    }
-
-    .display-2 {
-        font-size: 4.5rem !important;
-    }
-
-    .display-3 {
-        font-size: 4rem !important;
-    }
-
-    .display-4 {
-        font-size: 3.5rem !important;
-    }
-
-    .display-5 {
-        font-size: 3.5rem !important;
-    }
-
-    .display-6 {
-        font-size: 3rem !important;
-    }
+    color: #0d9488 !important;
 }
 
 .cursor-hover:hover {
@@ -318,14 +432,47 @@ body {
     bottom: 1rem;
     right: 1rem;
     z-index: 1000;
+}
 
+/* Radio Section - Non-scrollable */
+#radio {
+    overflow: hidden !important;
+}
+
+#radio iframe {
+    overflow: hidden !important;
+}
+
+/* Default section visibility for all pages */
+section {
+    opacity: 1;
+    transform: none;
 }
 
 
-/*------------------------------------*\
-    HEADER/START
-\*------------------------------------*/
 
+/* Loading Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* Smooth Scroll Behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Header Styles */
 header {
     width: 100%;
     color: white;
@@ -337,7 +484,7 @@ header {
 
 .nav-main,
 a {
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', 'Segoe UI', 'Arial', sans-serif;
     color: white;
     text-decoration: none;
     margin: 0 1em;
@@ -359,64 +506,9 @@ a {
     border-left: none;
 }
 
-@media (max-width: 991.98px) {
-    .logo {
-        margin-left: 0;
-        width: 250px !important;
-        height: auto;
-    }
-
-    .nav-item.border-right {
-        border-right: none !important;
-    }
-
-    .nav-main {
-        font-size: 40px !important;
-        padding: 20px 20px !important;
-    }
-
-    .about-us-dropdown {
-        display: none !important;
-    }
-
-    .donate-btn {
-        margin-bottom: 1rem;
-        width: 22rem !important;
-        font-size: 26px !important;
-        padding: 18px 30px !important;
-    }
-
-    /* Larger dropdown menu items on mobile */
-    .dropdown-menu a {
-        font-size: 28px !important;
-        padding: 15px 20px !important;
-    }
-}
-
 .navbar-brand {
     margin-left: 5rem;
     padding: 0 !important;
-}
-
-/* Hover effect for dropdown */
-.nav-item.dropdown:hover .dropdown-menu {
-    display: block;
-    opacity: 1;
-    visibility: visible;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-.dropdown-menu {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-    margin-top: 0;
-}
-
-/* Ensure dropdown stays open when hovering over the menu itself */
-.dropdown-menu:hover {
-    opacity: 1;
-    visibility: visible;
 }
 
 .navbar {
@@ -614,6 +706,163 @@ button:focus {
     transition: .24s ease-out all;
 }
 
-/*------------------------------------*\
-    HEADER/END
-\*------------------------------------*/
+/* Hover effect for dropdown */
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Ensure dropdown stays open when hovering over the menu itself */
+.dropdown-menu:hover {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 991.98px) {
+    .parallax-effect {
+        background-position: center !important;
+        background-size: auto;
+    }
+
+    .hero-section {
+        max-height: 50vh !important;
+        width: 100vw !important;
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+    }
+
+    .about-img {
+        margin-bottom: 1.5rem;
+    }
+
+    /* Larger Listen Live button on mobile */
+    .listen-live-btn {
+        font-size: 24px !important;
+        padding: 20px 35px !important;
+        bottom: 2rem;
+        right: 2rem;
+    }
+
+    /* Improved text sizes for mobile */
+    body {
+        font-size: 32px !important;
+    }
+
+    h1, .h1 {
+        font-size: 4.5rem !important;
+    }
+
+    h2, .h2 {
+        font-size: 4rem !important;
+    }
+
+    h3, .h3 {
+        font-size: 3.5rem !important;
+    }
+
+    h4, .h4 {
+        font-size: 3rem !important;
+    }
+
+    h5, .h5 {
+        font-size: 2.5rem !important;
+    }
+
+    h6, .h6 {
+        font-size: 2rem !important;
+    }
+
+    .lead {
+        font-size: 2.5rem !important;
+        line-height: 1.8 !important;
+    }
+
+    .card-text {
+        font-size: 2rem !important;
+        line-height: 1.7 !important;
+    }
+
+    .card-title {
+        font-size: 2rem !important;
+    }
+
+    p {
+        font-size: 2rem !important;
+        line-height: 1.7 !important;
+    }
+
+    .display-1 {
+        font-size: 5rem !important;
+    }
+
+    .display-2 {
+        font-size: 4.5rem !important;
+    }
+
+    .display-3 {
+        font-size: 4rem !important;
+    }
+
+    .display-4 {
+        font-size: 3.5rem !important;
+    }
+
+    .display-5 {
+        font-size: 3.5rem !important;
+    }
+
+    .display-6 {
+        font-size: 3rem !important;
+    }
+
+    .logo {
+        margin-left: 0;
+        width: 250px !important;
+        height: auto;
+    }
+
+    .nav-item.border-right {
+        border-right: none !important;
+    }
+
+    .nav-main {
+        font-size: 40px !important;
+        padding: 20px 20px !important;
+    }
+
+    .about-us-dropdown {
+        display: none !important;
+    }
+
+    .donate-btn {
+        margin-bottom: 1rem;
+        width: 22rem !important;
+        font-size: 26px !important;
+        padding: 18px 30px !important;
+    }
+
+    /* Larger dropdown menu items on mobile */
+    .dropdown-menu a {
+        font-size: 28px !important;
+        padding: 15px 20px !important;
+    }
+
+    /* Enhanced mobile experience */
+    .card:hover {
+        transform: translateY(-5px) scale(1.01);
+    }
+    
+    .btn:hover {
+        transform: translateY(-1px);
+    }
+    
+    .nav-social:hover {
+        transform: translateY(-2px) scale(1.05);
+    }
+}
