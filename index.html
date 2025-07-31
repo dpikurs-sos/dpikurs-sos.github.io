@@ -69,26 +69,32 @@
             // Enhanced detail section animations
             const openDetail = (sectionId) => {
                 const section = document.getElementById(`${sectionId}Detail`);
-                section.classList.add("active");
-                document.querySelector('.detail-backdrop').classList.add('active');
-                document.body.style.overflow = "hidden";
+                const backdrop = document.querySelector('.detail-backdrop');
                 
-                // Add entrance animation
+                // Show backdrop first
+                backdrop.classList.add('active');
+                
+                // Then show section with smooth animation
                 setTimeout(() => {
-                    section.style.transform = "translate(-50%, -50%) scale(1)";
-                    section.style.opacity = "1";
-                }, 100);
+                    section.classList.add("active");
+                }, 50);
+                
+                document.body.style.overflow = "hidden";
             };
 
             const closeDetail = () => {
+                const backdrop = document.querySelector('.detail-backdrop');
+                
+                // Hide section first
                 detailSections.forEach((section) => {
-                    section.style.transform = "translate(-50%, -50%) scale(0.9)";
-                    section.style.opacity = "0";
-                    setTimeout(() => {
-                        section.classList.remove("active");
-                    }, 300);
+                    section.classList.remove("active");
                 });
-                document.querySelector('.detail-backdrop').classList.remove('active');
+                
+                // Then hide backdrop
+                setTimeout(() => {
+                    backdrop.classList.remove('active');
+                }, 200);
+                
                 document.body.style.overflow = "";
             };
 

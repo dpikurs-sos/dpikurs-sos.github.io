@@ -344,38 +344,47 @@ section.py-5 {
 
 /* Detail Section Styles */
 .detail-backdrop {
-    display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0);
     z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(0px);
 }
 
 .detail-backdrop.active {
-    display: block;
+    opacity: 1;
+    visibility: visible;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
 }
 
 .detail-section {
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(100%, -50%);
+    transform: translate(-50%, -50%) scale(0.8);
     width: 90%;
     max-width: 1200px;
     height: auto;
     max-height: 80vh;
     z-index: 1001;
     overflow-y: auto;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0;
     visibility: hidden;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    background: white;
 }
 
 .detail-section.active {
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(1);
     opacity: 1;
     visibility: visible;
 }
@@ -858,5 +867,38 @@ button:focus {
     
     .nav-social:hover {
         transform: translateY(-2px) scale(1.05);
+    }
+    
+    /* Larger buttons for Explore Supports and Learn More About Our History */
+    .btn.btn-lg {
+        font-size: 2.2rem !important;
+        padding: 1.5rem 3rem !important;
+        min-height: 80px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        line-height: 1.2;
+    }
+    
+    /* Specific styling for the hero section Explore Supports button */
+    .hero-section .btn.btn-lg {
+        font-size: 2.4rem !important;
+        padding: 1.8rem 3.5rem !important;
+        min-height: 90px;
+    }
+    
+    /* Specific styling for the About section Learn More About Our History button */
+    #about .btn.btn-lg {
+        font-size: 2.2rem !important;
+        padding: 1.5rem 3rem !important;
+        min-height: 80px;
+    }
+    
+    /* Specific styling for the Contact section Email Us button */
+    #contact .btn.btn-lg {
+        font-size: 2.3rem !important;
+        padding: 1.6rem 3.2rem !important;
+        min-height: 85px;
     }
 }
