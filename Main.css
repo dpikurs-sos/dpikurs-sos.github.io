@@ -270,7 +270,7 @@ body {
     }
 
     .display-1 {
-        font-size: 4.5rem !important;
+        font-size: 5rem !important;
     }
 
     .display-2 {
@@ -278,19 +278,19 @@ body {
     }
 
     .display-3 {
-        font-size: 3.5rem !important;
+        font-size: 4rem !important;
     }
 
     .display-4 {
-        font-size: 3rem !important;
+        font-size: 3.5rem !important;
     }
 
     .display-5 {
-        font-size: 2.75rem !important;
+        font-size: 3.5rem !important;
     }
 
     .display-6 {
-        font-size: 2.5rem !important;
+        font-size: 3rem !important;
     }
 }
 
