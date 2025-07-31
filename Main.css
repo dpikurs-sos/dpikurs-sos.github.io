@@ -223,49 +223,49 @@ body {
 
     /* Improved text sizes for mobile */
     body {
-        font-size: 28px !important;
+        font-size: 32px !important;
     }
 
     h1, .h1 {
-        font-size: 4rem !important;
+        font-size: 4.5rem !important;
     }
 
     h2, .h2 {
-        font-size: 3.5rem !important;
+        font-size: 4rem !important;
     }
 
     h3, .h3 {
-        font-size: 3rem !important;
+        font-size: 3.5rem !important;
     }
 
     h4, .h4 {
-        font-size: 2.5rem !important;
+        font-size: 3rem !important;
     }
 
     h5, .h5 {
-        font-size: 2rem !important;
+        font-size: 2.5rem !important;
     }
 
     h6, .h6 {
-        font-size: 1.75rem !important;
+        font-size: 2rem !important;
     }
 
     .lead {
-        font-size: 2rem !important;
+        font-size: 2.5rem !important;
         line-height: 1.8 !important;
     }
 
     .card-text {
-        font-size: 1.7rem !important;
+        font-size: 2rem !important;
         line-height: 1.7 !important;
     }
 
     .card-title {
-        font-size: 1.7rem !important;
+        font-size: 2rem !important;
     }
 
     p {
-        font-size: 1.7rem !important;
+        font-size: 2rem !important;
         line-height: 1.7 !important;
     }
 
