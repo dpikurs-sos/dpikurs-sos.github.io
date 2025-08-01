@@ -188,7 +188,7 @@ section.py-5 {
 
 /* Hero Section */
 .hero-section {
-    background-image: url('collage.png');
+    background-image: url('collage_hero.png');
     min-height: 80vh !important;
     max-height: 1000px;
     background-repeat: no-repeat;
