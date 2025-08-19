@@ -15,6 +15,25 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
+    <style>
+      /* Remove hover effects from cards */
+      .card:hover {
+        transform: none !important;
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+      }
+      
+      .photo-placeholder {
+        background-color: #f8f9fa;
+        border: 2px dashed #dee2e6;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 200px;
+        color: #6c757d;
+        font-style: italic;
+      }
+    </style>
   </head>
 
   <body>
@@ -30,21 +49,112 @@
 
     <div id="header"></div>
 
-    <section id="sustainability" class="py-5">
-      <div class="container">
-        <div class="row g-4">
-          <div class="col-lg-4 text-center">
-            <img src="sustainability_one.png" alt="Environmental Sustainability Ambition Statement" class="img-fluid" />
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h1 class="display-5 fw-bold text-center my-4 text-teal-dark">Environmental Sustainability</h1>
+          
+          <!-- Photo Placeholders -->
+          <div class="row mb-5">
+            <div class="col-md-4 mb-3">
+              <div class="photo-placeholder">
+                <span>Photo 1 Placeholder</span>
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <div class="photo-placeholder">
+                <span>Photo 2 Placeholder</span>
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <div class="photo-placeholder">
+                <span>Photo 3 Placeholder</span>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="photo-placeholder">
+                <span>Photo 4 Placeholder</span>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="photo-placeholder">
+                <span>Photo 5 Placeholder</span>
+              </div>
+            </div>
           </div>
-          <div class="col-lg-4 text-center">
-            <img src="sustainability_two.png" alt="Environmental Sustainability in SOS" class="img-fluid" />
+          
+          <!-- Environmental Sustainability Ambition Statement -->
+          <div class="row mb-5">
+            <div class="col">
+              <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                  <h2 class="card-title text-teal-dark mb-4">Environmental Sustainability Ambition Statement</h2>
+                  <p class="lead mb-3">
+                    At SOS, we are dedicated to supporting people to live full and meaningful lives.
+                  </p>
+                  <p class="lead mb-3">
+                    For us, true wellbeing means achieving a balance across physical, mental, emotional, social, and spiritual health so that every person we support can thrive in their own unique way.
+                  </p>
+                  <p class="lead mb-3">
+                    We also understand that the wellbeing of people and the health of our planet are deeply connected. The planet must thrive so that people can thrive.
+                  </p>
+                  <p class="lead mb-3">
+                    That's why we are committed to a holistic and sustainable approach in everything we do - one that places both people and the environment at the centre.
+                  </p>
+                  <p class="lead mb-3">
+                    We will continue to create purposeful and environmentally conscious supports that ensure people reach their full potential and that contribute to a more sustainable future for all.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="col-lg-4 text-center">
-            <img src="sustainability.png" alt="Sustainable Horticulture in Bloom and Deenview" class="img-fluid" />
+
+          <!-- Sustainability Actions -->
+          <div class="row mb-5">
+            <div class="col">
+              <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                  <h2 class="card-title text-teal-dark mb-4">Sustainability Actions</h2>
+                  <ul class="list-unstyled">
+                    <li class="mb-3">
+                      <p class="lead mb-0">
+                        <i class="fas fa-graduation-cap me-3 text-teal-dark"></i>
+                        We facilitate education programmes for the people we support and our staff team.
+                      </p>
+                    </li>
+                    <li class="mb-3">
+                      <p class="lead mb-0">
+                        <i class="fas fa-leaf me-3 text-teal-dark"></i>
+                        We have a Green Team who champion and drive sustainability initiatives across our organisation.
+                      </p>
+                    </li>
+                    <li class="mb-3">
+                      <p class="lead mb-0">
+                        <i class="fas fa-shopping-cart me-3 text-teal-dark"></i>
+                        We prioritise Green Procurement sourcing products and services that have minimal environmental impact over their lifecycle.
+                      </p>
+                    </li>
+                    <li class="mb-3">
+                      <p class="lead mb-0">
+                        <i class="fas fa-recycle me-3 text-teal-dark"></i>
+                        We are running a Waste Reduction programme across the organisation.
+                      </p>
+                    </li>
+                    <li class="mb-3">
+                      <p class="lead mb-0">
+                        <i class="fas fa-lightbulb me-3 text-teal-dark"></i>
+                        We are actively seeking funding to improve the energy efficiency of our organisation.
+                      </p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+
     <div id="footer"></div>
   </body>
 </html>
