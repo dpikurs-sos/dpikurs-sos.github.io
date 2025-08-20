@@ -74,7 +74,7 @@ section.py-5 {
     position: relative;
 }
 
-.card:hover {
+.card[data-section]:hover {
     transform: translateY(-10px) scale(1.02);
     box-shadow: var(--shadow-heavy);
 }
@@ -90,7 +90,7 @@ section.py-5 {
     transition: left 0.5s;
 }
 
-.card:hover::before {
+.card[data-section]:hover::before {
     left: 100%;
 }
 
@@ -99,7 +99,7 @@ section.py-5 {
     border-radius: 16px 16px 0 0;
 }
 
-.card:hover .card-img-top {
+.card[data-section]:hover .card-img-top {
     transform: scale(1.1);
 }
 
@@ -327,7 +327,7 @@ section.py-5 {
 /* Hero Section */
 .hero-section {
     background-image: url('collage_hero.png');
-    min-height: 80vh !important;
+    min-height: 100vh !important;
     max-height: 1000px;
     background-repeat: no-repeat;
     background-size: cover;
@@ -860,7 +860,7 @@ button:focus {
     }
 
     /* Enhanced mobile experience */
-    .card:hover {
+    .card[data-section]:hover {
         transform: translateY(-5px) scale(1.01);
     }
     

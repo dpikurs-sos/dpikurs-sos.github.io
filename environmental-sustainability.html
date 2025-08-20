@@ -16,12 +16,6 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
     <style>
-      /* Remove hover effects from cards */
-      .card:hover {
-        transform: none !important;
-        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-      }
-
       /* Image gallery styling */
       .image-container {
         position: relative;
@@ -37,7 +31,7 @@
 
       .image-container img {
         width: 100%;
-        height: 250px;
+        height: 200px;
         object-fit: cover;
         object-position: center;
         transition: transform 0.3s ease-in-out;
@@ -51,48 +45,47 @@
       .photo-gallery {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(2, 250px);
+        grid-template-rows: repeat(2, 200px);
         gap: 1rem;
         align-items: start;
+        margin-bottom: 2rem;
+        height: 420px;
+        overflow: hidden;
       }
 
       .photo-gallery .image-container.span-2-rows {
         grid-row: span 2;
+        height: 100%;
       }
 
       .photo-gallery .image-container.span-2-rows img {
         height: 100%;
-        min-height: 500px;
+        width: 100%;
+        object-fit: cover;
       }
 
       /* Responsive grid adjustments */
       @media (max-width: 768px) {
         .photo-gallery {
           grid-template-columns: repeat(2, 1fr);
-          grid-template-rows: repeat(3, 200px);
+          grid-template-rows: repeat(3, 180px);
+          height: 380px;
         }
         
         .photo-gallery .image-container.span-2-rows {
           grid-row: span 2;
-        }
-        
-        .photo-gallery .image-container.span-2-rows img {
-          min-height: 400px;
         }
       }
 
       @media (max-width: 576px) {
         .photo-gallery {
           grid-template-columns: 1fr;
-          grid-template-rows: repeat(5, 180px);
+          grid-template-rows: repeat(5, 160px);
+          height: 800px;
         }
         
         .photo-gallery .image-container.span-2-rows {
           grid-row: span 1;
-        }
-        
-        .photo-gallery .image-container.span-2-rows img {
-          min-height: auto;
         }
       }
 
@@ -201,69 +194,65 @@
           <!-- Environmental Sustainability Ambition Statement -->
           <div class="row mb-5">
             <div class="col">
-              <div class="card h-100 border-0 shadow-sm">
-                <div class="card-body">
-                  <h2 class="card-title text-teal-dark mb-4">Environmental Sustainability Ambition Statement</h2>
-                  <p class="lead mb-3">
-                    At SOS, we are dedicated to supporting people to live full and meaningful lives.
-                  </p>
-                  <p class="lead mb-3">
-                    For us, true wellbeing means achieving a balance across physical, mental, emotional, social, and spiritual health so that every person we support can thrive in their own unique way.
-                  </p>
-                  <p class="lead mb-3">
-                    We also understand that the wellbeing of people and the health of our planet are deeply connected. The planet must thrive so that people can thrive.
-                  </p>
-                  <p class="lead mb-3">
-                    That's why we are committed to a holistic and sustainable approach in everything we do - one that places both people and the environment at the centre.
-                  </p>
-                  <p class="lead mb-3">
-                    We will continue to create purposeful and environmentally conscious supports that ensure people reach their full potential and that contribute to a more sustainable future for all.
-                  </p>
-                </div>
-              </div>
+              <section class="mb-5">
+                <h2 class="text-teal-dark mb-4">Environmental Sustainability Ambition Statement</h2>
+                <p class="lead mb-3">
+                  At SOS, we are dedicated to supporting people to live full and meaningful lives.
+                </p>
+                <p class="lead mb-3">
+                  For us, true wellbeing means achieving a balance across physical, mental, emotional, social, and spiritual health so that every person we support can thrive in their own unique way.
+                </p>
+                <p class="lead mb-3">
+                  We also understand that the wellbeing of people and the health of our planet are deeply connected. The planet must thrive so that people can thrive.
+                </p>
+                <p class="lead mb-3">
+                  That's why we are committed to a holistic and sustainable approach in everything we do - one that places both people and the environment at the centre.
+                </p>
+                <p class="lead mb-3">
+                  We will continue to create purposeful and environmentally conscious supports that ensure people reach their full potential and that contribute to a more sustainable future for all.
+                </p>
+              </section>
             </div>
           </div>
 
           <!-- Sustainability Actions -->
           <div class="row mb-5">
             <div class="col">
-              <div class="card h-100 border-0 shadow-sm">
-                <div class="card-body">
-                  <h2 class="card-title text-teal-dark mb-4">Sustainability Actions</h2>
-                  <ul class="list-unstyled">
-                    <li class="mb-3">
-                      <p class="lead mb-0">
-                        <i class="fas fa-graduation-cap me-3 text-teal-dark"></i>
-                        We facilitate education programmes for the people we support and our staff team.
-                      </p>
-                    </li>
-                    <li class="mb-3">
-                      <p class="lead mb-0">
-                        <i class="fas fa-leaf me-3 text-teal-dark"></i>
-                        We have a Green Team who champion and drive sustainability initiatives across our organisation.
-                      </p>
-                    </li>
-                    <li class="mb-3">
-                      <p class="lead mb-0">
-                        <i class="fas fa-shopping-cart me-3 text-teal-dark"></i>
-                        We prioritise Green Procurement sourcing products and services that have minimal environmental impact over their lifecycle.
-                      </p>
-                    </li>
-                    <li class="mb-3">
-                      <p class="lead mb-0">
-                        <i class="fas fa-recycle me-3 text-teal-dark"></i>
-                        We are running a Waste Reduction programme across the organisation.
-                      </p>
-                    </li>
-                    <li class="mb-3">
-                      <p class="lead mb-0">
-                        <i class="fas fa-lightbulb me-3 text-teal-dark"></i>
-                        We are actively seeking funding to improve the energy efficiency of our organisation.
-                      </p>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+              <section class="mb-5">
+                <h2 class="text-teal-dark mb-4">Sustainability Actions</h2>
+                <ul class="list-unstyled">
+                  <li class="mb-3">
+                    <p class="lead mb-0">
+                      <i class="fas fa-graduation-cap me-3 text-teal-dark"></i>
+                      We facilitate education programmes for the people we support and our staff team.
+                    </p>
+                  </li>
+                  <li class="mb-3">
+                    <p class="lead mb-0">
+                      <i class="fas fa-leaf me-3 text-teal-dark"></i>
+                      We have a Green Team who champion and drive sustainability initiatives across our organisation.
+                    </p>
+                  </li>
+                  <li class="mb-3">
+                    <p class="lead mb-0">
+                      <i class="fas fa-shopping-cart me-3 text-teal-dark"></i>
+                      We prioritise Green Procurement sourcing products and services that have minimal environmental impact over their lifecycle.
+                    </p>
+                  </li>
+                  <li class="mb-3">
+                    <p class="lead mb-0">
+                      <i class="fas fa-recycle me-3 text-teal-dark"></i>
+                      We are running a Waste Reduction programme across the organisation.
+                    </p>
+                  </li>
+                  <li class="mb-3">
+                    <p class="lead mb-0">
+                      <i class="fas fa-lightbulb me-3 text-teal-dark"></i>
+                      We are actively seeking funding to improve the energy efficiency of our organisation.
+                    </p>
+                  </li>
+                </ul>
+              </section>
             </div>
           </div>
         </div>
