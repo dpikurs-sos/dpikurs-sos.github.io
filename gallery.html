@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>SOS Kilkenny - Gallery</title>
+    <link rel="icon" type="image/x-icon" href="/sosLogo.png" />
+    <link rel="apple-touch-icon" href="/sosLogo.png" />
+    <link rel="stylesheet" type="text/css" href="https://dpikurs-sos.github.io/Main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    />
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <style>
+      /* Gallery page specific styles */
+      .gallery-header {
+        background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
+        color: white;
+        padding: 4rem 0;
+        margin-bottom: 3rem;
+      }
+
+      .gallery-title {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+
+      .gallery-subtitle {
+        font-size: 1.3rem;
+        opacity: 0.9;
+      }
+
+      /* Collage-like grid layout */
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-auto-rows: 250px;
+        gap: 1rem;
+        padding: 0 1rem;
+        margin-bottom: 3rem;
+      }
+
+      .gallery-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+      }
+
+      .gallery-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      /* Smart cropping for different image types */
+      .gallery-item.tall img {
+        object-position: center 25%; /* Focus on upper portion for tall images */
+      }
+
+      .gallery-item.large img {
+        object-position: center 30%; /* Slightly higher focus for large images */
+      }
+
+      /* Specific adjustments for portrait-heavy images */
+      .gallery-item.portrait img {
+        object-position: center 20%; /* Higher focus for portrait images */
+      }
+
+      .gallery-item:hover img {
+        transform: scale(1.05);
+      }
+
+      /* Different sizes for collage effect */
+      .gallery-item.tall {
+        grid-row: span 2;
+      }
+
+      .gallery-item.wide {
+        grid-column: span 2;
+      }
+
+      .gallery-item.large {
+        grid-column: span 2;
+        grid-row: span 2;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .gallery-grid {
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          grid-auto-rows: 200px;
+          gap: 0.75rem;
+          padding: 0 0.5rem;
+        }
+
+        .gallery-item.wide,
+        .gallery-item.large {
+          grid-column: span 1;
+        }
+
+        .gallery-item.tall {
+          grid-row: span 1;
+        }
+
+        .gallery-title {
+          font-size: 2.5rem;
+        }
+
+        .gallery-subtitle {
+          font-size: 1.1rem;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .gallery-grid {
+          grid-template-columns: 1fr;
+          grid-auto-rows: 180px;
+          gap: 0.5rem;
+        }
+
+        .gallery-title {
+          font-size: 2rem;
+        }
+      }
+
+      /* Modal styling */
+      .modal-xl {
+        max-width: 90vw;
+      }
+
+      .modal-content {
+        background-color: rgba(0, 0, 0, 0.9);
+        border: none;
+        border-radius: 12px;
+      }
+
+      .modal-header {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 1050;
+        background: transparent;
+      }
+
+      .btn-close {
+        filter: invert(1);
+        opacity: 0.8;
+      }
+
+      .btn-close:hover {
+        opacity: 1;
+      }
+
+      .modal-body img {
+        max-height: 90vh;
+        object-fit: contain;
+      }
+
+      /* Navigation arrows */
+      .modal-nav-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 1060;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal-nav-btn:hover {
+        background: rgba(0, 0, 0, 0.9);
+        transform: translateY(-50%) scale(1.1);
+      }
+
+      .modal-nav-prev {
+        left: 20px;
+      }
+
+      .modal-nav-next {
+        right: 20px;
+      }
+
+      /* Hide arrows on very small screens */
+      @media (max-width: 576px) {
+        .modal-nav-btn {
+          width: 40px;
+          height: 40px;
+          font-size: 20px;
+        }
+        
+        .modal-nav-prev {
+          left: 10px;
+        }
+        
+        .modal-nav-next {
+          right: 10px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Bootstrap Bundle JS (includes Popper.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(function () {
+        $("#header").load("header.html");
+        $("#footer").load("footer.html");
+      });
+    </script>
+
+    <div id="header"></div>
+
+    <!-- Gallery Header -->
+    <section class="gallery-header">
+      <div class="container text-center">
+        <h1 class="gallery-title">Our Gallery</h1>
+        <p class="gallery-subtitle">
+          A visual journey through our community, learning programs, and teams
+        </p>
+      </div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <div class="container-fluid mt-5">
+      <div class="gallery-grid" id="galleryGrid">
+        <!-- Live Images -->
+        <div class="gallery-item portrait tall">
+          <img src="Live/Cover P3.jpg" alt="Community Cover Photo" />
+        </div>
+
+        <div class="gallery-item portrait">
+          <img src="Live/Hort 1.jpg" alt="Horticulture Work" />
+        </div>
+
+        <div class="gallery-item tall">
+          <img src="Live/Hort 2.JPG" alt="Horticulture Project" />
+        </div>
+
+        <div class="gallery-item">
+          <img src="Live/Tunnel 2.jpg" alt="Tunnel Project" />
+        </div>
+
+        <div class="gallery-item">
+          <img src="Live/Tunnel a.jpg" alt="Tunnel Activity" />
+        </div>
+
+        <div class="gallery-item large">
+          <img src="Live/VR Photo 1.JPG" alt="Virtual Reality Experience" />
+        </div>
+
+        <div class="gallery-item large">
+          <img src="Live/Power RE.JPG" alt="Power Project" />
+        </div>
+
+        <div class="gallery-item">
+          <img src="Live/Multiball Prospectus.jpg" alt="Multiball Prospectus" />
+        </div>
+
+        <div class="gallery-item portrait">
+          <img src="Live/KC TJ Reids.jpg" alt="KC TJ Reids" />
+        </div>
+
+        <div class="gallery-item portrait">
+          <img src="Live/Jm and DK.jpg" alt="JM and DK" />
+        </div>
+
+        <div class="gallery-item tall">
+          <img src="Live/JH sport.jpg" alt="JH Sport" />
+        </div>
+
+        <div class="gallery-item tall">
+          <img src="Live/JF Coffee.jpg" alt="JF Coffee" />
+        </div>
+
+        <div class="gallery-item large">
+          <img src="Live/EOH Community.jpg" alt="EOH Community" />
+        </div>
+
+        <div class="gallery-item portrait">
+          <img src="Live/EE 1.jpg" alt="EE 1" />
+        </div>
+
+        <div class="gallery-item large">
+          <img src="Live/Ardnore 1.jpg" alt="Ardnore 1" />
+        </div>
+
+        <!-- Learn Images -->
+        <div class="gallery-item portrait">
+          <img src="Learn/AA Training 3.jpg" alt="AA Training" />
+        </div>
+
+        <div class="gallery-item portrait">
+          <img src="Learn/VR Photo 2.JPG" alt="Virtual Reality Training" />
+        </div>
+
+        <div class="gallery-item large">
+          <img src="Learn/RE Podcasting.jpg" alt="Podcasting Training" />
+        </div>
+
+        <div class="gallery-item">
+          <img src="Learn/Photography 2.JPG" alt="Photography Training" />
+        </div>
+
+        <div class="gallery-item">
+          <img src="Learn/Multiball Prospectus.jpg" alt="Multiball Prospectus" />
+        </div>
+
+        <div class="gallery-item tall">
+          <img src="Learn/KC Dreamtime.jpg" alt="KC Dreamtime" />
+        </div>
+
+        <div class="gallery-item">
+          <img src="Learn/GH DT.jpg" alt="GH DT" />
+        </div>
+
+        <div class="gallery-item">
+          <img src="Learn/FD.jpg" alt="FD" />
+        </div>
+
+        <div class="gallery-item">
+          <img src="Learn/ESB EFG 2.jpg" alt="ESB EFG 2" />
+        </div>
+
+        <div class="gallery-item">
+          <img src="Learn/EK.jpg" alt="EK" />
+        </div>
+
+        <div class="gallery-item portrait">
+          <img src="Learn/EC The Pod.jpg" alt="EC The Pod" />
+        </div>
+
+        <div class="gallery-item large">
+          <img src="Learn/Dreamtime Radio 6.JPG" alt="Dreamtime Radio 6" />
+        </div>
+
+        <div class="gallery-item large">
+          <img src="Learn/Dreamtime Radio 5.JPG" alt="Dreamtime Radio 5" />
+        </div>
+
+        <div class="gallery-item tall">
+          <img src="Learn/DF AA.JPG" alt="DF AA" />
+        </div>
+
+        <div class="gallery-item portrait">
+          <img src="Learn/AM The Pod.jpg" alt="AM The Pod" />
+        </div>
+
+        <div class="gallery-item portrait">
+          <img src="Learn/AD AA.JPG" alt="AD AA" />
+        </div>
+
+        <!-- Recruitment Images -->
+        <div class="gallery-item portrait">
+          <img src="Recruitment/MOK 2 a.jpg" alt="MOK 2 a" />
+        </div>
+
+        <div class="gallery-item wide large">
+          <img src="Recruitment/Eileen Egars and Larry Keogh.jpg" alt="Eileen Egars and Larry Keogh" />
+        </div>
+
+        <div class="gallery-item wide">
+          <img src="Recruitment/Cmc 1.jpg" alt="CMC 1" />
+        </div>
+
+        <div class="gallery-item large">
+          <img src="Recruitment/CH 2.jpg" alt="CH 2" />
+        </div>
+      </div>
+    </div>
+
+    <div id="footer"></div>
+
+    <!-- Image Modal -->
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header border-0">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body text-center p-0 position-relative">
+            <img id="modalImage" src="" alt="" class="img-fluid">
+            
+            <!-- Navigation Arrows -->
+            <button class="modal-nav-btn modal-nav-prev" id="prevBtn" aria-label="Previous image">
+              <span>&lt;</span>
+            </button>
+            <button class="modal-nav-btn modal-nav-next" id="nextBtn" aria-label="Next image">
+              <span>&gt;</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Gallery functionality
+      document.addEventListener('DOMContentLoaded', function() {
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const modal = new bootstrap.Modal(document.getElementById('imageModal'));
+        const modalImage = document.getElementById('modalImage');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        
+        let currentImageIndex = 0;
+
+        // Image modal functionality
+        galleryItems.forEach((item, index) => {
+          const img = item.querySelector('img');
+          img.style.cursor = 'pointer';
+          
+          item.addEventListener('click', function() {
+            currentImageIndex = index;
+            modalImage.src = img.src;
+            modalImage.alt = img.alt;
+            modal.show();
+            updateNavigationButtons();
+          });
+        });
+
+        // Navigation functionality
+        prevBtn.addEventListener('click', () => {
+          currentImageIndex = (currentImageIndex - 1 + galleryItems.length) % galleryItems.length;
+          const prevImg = galleryItems[currentImageIndex].querySelector('img');
+          modalImage.src = prevImg.src;
+          modalImage.alt = prevImg.alt;
+          updateNavigationButtons();
+        });
+
+        nextBtn.addEventListener('click', () => {
+          currentImageIndex = (currentImageIndex + 1) % galleryItems.length;
+          const nextImg = galleryItems[currentImageIndex].querySelector('img');
+          modalImage.src = nextImg.src;
+          modalImage.alt = nextImg.alt;
+          updateNavigationButtons();
+        });
+
+        function updateNavigationButtons() {
+          // Show/hide navigation buttons based on current position
+          prevBtn.style.display = galleryItems.length > 1 ? 'flex' : 'none';
+          nextBtn.style.display = galleryItems.length > 1 ? 'flex' : 'none';
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+          if (modal._element.classList.contains('show')) {
+            if (e.key === 'ArrowLeft') {
+              prevBtn.click();
+            } else if (e.key === 'ArrowRight') {
+              nextBtn.click();
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
