@@ -111,3 +111,16 @@
 <script
   src="https://cdn.userway.org/widget.js"
   data-account="lP98uqWKks"></script>
+
+<script>
+  (function() {
+    function setHeaderHeightVar() {
+      var masthead = document.getElementById('masthead');
+      if (!masthead) return;
+      var h = masthead.offsetHeight;
+      document.documentElement.style.setProperty('--header-height', h + 'px');
+    }
+    window.addEventListener('load', setHeaderHeightVar);
+    window.addEventListener('resize', setHeaderHeightVar);
+  })();
+</script>
