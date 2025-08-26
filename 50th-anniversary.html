@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8" />
+        <title>SOS Kilkenny - 50th Anniversary</title>
+        <link rel="icon" type="image/x-icon" href="/sosLogo.png" />
+        <link rel="apple-touch-icon" href="/sosLogo.png" />
+        <link rel="stylesheet" type="text/css"
+            href="https://dpikurs-sos.github.io/Main.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+        <!-- Font Awesome for icons -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+        <style>
+      /* 50th Anniversary page specific styles */
+      .anniversary-header {
+        background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
+        color: white;
+        padding: 4rem 0;
+        margin-bottom: 3rem;
+      }
+
+      .anniversary-title {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+
+      .anniversary-subtitle {
+        font-size: 1.3rem;
+        opacity: 0.9;
+      }
+
+      /* Content section styling */
+      .content-section {
+        margin-bottom: 4rem;
+      }
+
+             .content-image {
+         border-radius: 12px;
+         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+         transition: transform 0.3s ease-in-out;
+         max-height: 400px;
+         width: 100%;
+         object-fit: cover;
+         object-position: center;
+       }
+
+      .content-image:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      .youtube-container {
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .youtube-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+
+      /* Gallery page specific styles */
+      .gallery-header {
+        background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
+        color: white;
+        padding: 4rem 0;
+        margin-bottom: 3rem;
+      }
+
+      .gallery-title {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+
+      .gallery-subtitle {
+        font-size: 1.3rem;
+        opacity: 0.9;
+      }
+
+      /* Collage-like grid layout */
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-auto-rows: 250px;
+        gap: 1rem;
+        padding: 0 1rem;
+        margin-bottom: 3rem;
+      }
+
+      .gallery-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+      }
+
+      .gallery-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      /* Smart cropping for different image types */
+      .gallery-item.tall img {
+        object-position: center 25%; /* Focus on upper portion for tall images */
+      }
+
+      .gallery-item.large img {
+        object-position: center 30%; /* Slightly higher focus for large images */
+      }
+
+      /* Specific adjustments for portrait-heavy images */
+      .gallery-item.portrait img {
+        object-position: center 20%; /* Higher focus for portrait images */
+      }
+
+      .gallery-item:hover img {
+        transform: scale(1.05);
+      }
+
+      /* Different sizes for collage effect */
+      .gallery-item.tall {
+        grid-row: span 2;
+      }
+
+      .gallery-item.wide {
+        grid-column: span 2;
+      }
+
+      .gallery-item.large {
+        grid-column: span 2;
+        grid-row: span 2;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .gallery-grid {
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          grid-auto-rows: 200px;
+          gap: 0.75rem;
+          padding: 0 0.5rem;
+        }
+
+        .gallery-item.wide,
+        .gallery-item.large {
+          grid-column: span 1;
+        }
+
+        .gallery-item.tall {
+          grid-row: span 1;
+        }
+
+        .anniversary-title,
+        .gallery-title {
+          font-size: 2.5rem;
+        }
+
+        .anniversary-subtitle,
+        .gallery-subtitle {
+          font-size: 1.1rem;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .gallery-grid {
+          grid-template-columns: 1fr;
+          grid-auto-rows: 180px;
+          gap: 0.5rem;
+        }
+
+        .anniversary-title,
+        .gallery-title {
+          font-size: 2rem;
+        }
+      }
+
+      /* Modal styling */
+      .modal-xl {
+        max-width: 90vw;
+      }
+
+      .modal-content {
+        background-color: rgba(0, 0, 0, 0.9);
+        border: none;
+        border-radius: 12px;
+      }
+
+      .modal-header {
+        background-color: transparent;
+        border: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 1;
+      }
+
+      .btn-close {
+        filter: invert(1);
+        opacity: 0.8;
+      }
+
+      .btn-close:hover {
+        opacity: 1;
+      }
+
+      .modal-body {
+        padding: 0;
+      }
+
+      .modal-body img {
+        max-height: 90vh;
+        width: auto;
+        margin: 0 auto;
+      }
+
+      /* Navigation arrows for modal */
+      .modal-nav-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        font-size: 24px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 1;
+      }
+
+      .modal-nav-btn:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: translateY(-50%) scale(1.1);
+      }
+
+      .modal-nav-prev {
+        left: 20px;
+      }
+
+      .modal-nav-next {
+        right: 20px;
+      }
+
+      /* Hide arrows on very small screens */
+      @media (max-width: 576px) {
+        .modal-nav-btn {
+          width: 40px;
+          height: 40px;
+          font-size: 20px;
+        }
+        
+        .modal-nav-prev {
+          left: 10px;
+        }
+        
+        .modal-nav-next {
+          right: 10px;
+        }
+      }
+    </style>
+    </head>
+
+    <body>
+        <!-- Bootstrap Bundle JS (includes Popper.js) -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+      $(function () {
+        $("#header").load("header.html");
+        $("#footer").load("footer.html");
+      });
+    </script>
+
+        <div id="header"></div>
+
+        <!-- 50th Anniversary Header -->
+        <section class="anniversary-header">
+            <div class="container text-center">
+                <h1 class="anniversary-title">50th Anniversary</h1>
+                <p class="anniversary-subtitle">
+                    Celebrating Five Decades of Supporting People in Kilkenny
+                </p>
+            </div>
+        </section>
+
+        <!-- Content Sections -->
+        <div class="container mt-5">
+            <!-- First Content Section -->
+            <div class="content-section">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h2 class="text-teal-dark mb-4">A Legacy of Care and
+                            Support</h2>
+                        <p class="lead mb-3">
+                            For half a century, SOS Kilkenny has been at the
+                            heart of our community,
+                            providing essential supports to adults with
+                            intellectual disabilities and autism.
+                            What began as a small initiative has grown into a
+                            comprehensive service that
+                            touches the lives of hundreds of people across
+                            Kilkenny City and County.
+                        </p>
+                        <p class="lead mb-3">
+                            Our journey has been marked by innovation,
+                            compassion, and an unwavering
+                            commitment to the people we support. From our early
+                            days to the present,
+                            we've remained true to our founding principles while
+                            adapting to meet
+                            the evolving needs of our community.
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <img
+                            src="50th/SOS Kilkenny 50th Anniversary Celebrations-Celebration Cake.jpg"
+                            alt="50th Anniversary Celebration Cake"
+                            class="img-fluid content-image">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Second Content Section -->
+            <div class="content-section">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 order-lg-2">
+                        <h2 class="text-teal-dark mb-4">Celebrating Our
+                            Community</h2>
+                        <p class="lead mb-3">
+                            Our 50th anniversary celebrations brought together
+                            the entire SOS Kilkenny
+                            family - the people we support, our dedicated staff,
+                            families, friends,
+                            and community partners. It was a time to reflect on
+                            our achievements,
+                            honour those who have contributed to our success,
+                            and look forward to
+                            the future with optimism and determination.
+                        </p>
+                        <p class="lead mb-3">
+                            The celebrations highlighted the incredible work
+                            being done every day
+                            across our various programmes and services,
+                            showcasing the talents,
+                            skills, and achievements of the people we support.
+                            It was a powerful
+                            reminder of why we do what we do and the positive
+                            impact we have on
+                            our community.
+                        </p>
+                        <p class="lead mb-3">
+                            Watch the specially commissioned documentary,
+                            created by Pat Ryan, to mark our 50th Celebrations.
+                        </p>
+                    </div>
+                    <div class="col-lg-6 order-lg-1">
+                        <div class="youtube-container">
+                            <iframe
+                                src="https://www.youtube.com/embed/LWiRY7_m-qY?si=uIrO8xsw5lGvdfuT"
+                                title="SOS Kilkenny 50th Anniversary Video"
+                                allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Third Content Section -->
+            <div class="content-section">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h2 class="text-teal-dark mb-4">Looking Forward to the
+                            Future</h2>
+                        <p class="lead mb-3">
+                            As we celebrate this significant milestone, we're
+                            also looking ahead
+                            to the next 50 years. Our commitment to innovation,
+                            person-centred
+                            supports, and community integration remains stronger
+                            than ever.
+                            We continue to evolve our services to meet the
+                            changing needs of
+                            the people we support and the wider community.
+                        </p>
+                        <p class="lead mb-3">
+                            The future holds exciting opportunities for growth,
+                            learning, and
+                            development. We're committed to building on our
+                            strong foundation
+                            while embracing new approaches and technologies that
+                            will enhance
+                            the quality of life for the people we support.
+                            Together, we're
+                            building a more inclusive and supportive community
+                            for all.
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <img
+                            src="50th/SOS Kilkenny 50th Anniversary Celebrations-Francis Coughlan and Sr. Stanislaus Kennedy.jpg"
+                            alt="Francis Coughlan and Sr. Stanislaus Kennedy at 50th Anniversary"
+                            class="img-fluid content-image">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Gallery Section -->
+        <section class="gallery-header">
+            <div class="container text-center">
+                <h2 class="gallery-title">Celebration Gallery</h2>
+                <p class="gallery-subtitle">
+                    Capturing the joy and spirit of our 50th anniversary
+                    celebrations
+                </p>
+            </div>
+        </section>
+
+        <!-- Gallery Grid -->
+        <div class="container-fluid mt-5">
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- 50th Anniversary Images -->
+                <div class="gallery-item large">
+                    <img
+                        src="50th/SOS Kilkenny 50th Anniversary Celebrations-3.jpg"
+                        alt="50th Anniversary Celebrations" />
+                </div>
+
+                <div class="gallery-item portrait tall">
+                    <img
+                        src="50th/SOS Kilkenny 50th Anniversary Celebrations-Catherine O Rourke and Lord Mayor Cllr John Coonan.jpg"
+                        alt="Catherine O Rourke and Lord Mayor Cllr John Coonan" />
+                </div>
+
+                <div class="gallery-item wide">
+                    <img
+                        src="50th/SOS Kilkenny 50th Anniversary Celebrations-Francis Coughlan and John Lupton Presentation.jpg"
+                        alt="Francis Coughlan and John Lupton Presentation" />
+                </div>
+
+                <div class="gallery-item">
+                    <img
+                        src="50th/SOS Kilkenny 50th Anniversary Celebrations-2.jpg"
+                        alt="50th Anniversary Celebrations 2" />
+                </div>
+
+                <div class="gallery-item tall">
+                    <img
+                        src="50th/SOS Kilkenny 50th Anniversary Celebrations-4.jpg"
+                        alt="50th Anniversary Celebrations 4" />
+                </div>
+
+                <div class="gallery-item portrait">
+                    <img
+                        src="50th/SOS Kilkenny 50th Anniversary Celebrations-Chairperson Brian Walsh.jpg"
+                        alt="Chairperson Brian Walsh" />
+                </div>
+
+                <div class="gallery-item large">
+                    <img
+                        src="50th/SOS Kilkenny 50th Anniversary Celebrations-19.jpg"
+                        alt="50th Anniversary Celebrations 19" />
+                </div>
+
+                <div class="gallery-item">
+                    <img
+                        src="50th/SOS Kilkenny 50th Anniversary Celebrations-10.jpg"
+                        alt="50th Anniversary Celebrations 10" />
+                </div>
+
+                <div class="gallery-item tall">
+                    <img
+                        src="50th/SOS Kilkenny 50th Anniversary Celebrations-26.jpg"
+                        alt="50th Anniversary Celebrations 26" />
+                </div>
+
+                <div class="gallery-item wide">
+                    <img
+                        src="50th/SOS Kilkenny 50th Anniversary Celebrations-30.jpg"
+                        alt="50th Anniversary Celebrations 30" />
+                </div>
+
+                <div class="gallery-item portrait">
+                    <img
+                        src="50th/SOS Kilkenny 50th Anniversary Celebrations - Merrie Bergin.jpg"
+                        alt="Merrie Bergin" />
+                </div>
+
+                <div class="gallery-item">
+                    <img
+                        src="50th/SOS Kilkenny 50th Anniversary Celebrations-13.jpg"
+                        alt="50th Anniversary Celebrations 13" />
+                </div>
+
+                <div class="gallery-item large">
+                    <img
+                        src="50th/SOS Kilkenny 50th Anniversary Celebrations-31.jpg"
+                        alt="50th Anniversary Celebrations 31" />
+                </div>
+
+                <div class="gallery-item tall">
+                    <img
+                        src="50th/SOS Kilkenny 50th Anniversary Celebrations-34.jpg"
+                        alt="50th Anniversary Celebrations 34" />
+                </div>
+
+                <div class="gallery-item">
+                    <img
+                        src="50th/SOS Kilkenny 50th Anniversary Celebrations-39.jpg"
+                        alt="50th Anniversary Celebrations 39" />
+                </div>
+
+                <div class="gallery-item portrait">
+                    <img
+                        src="50th/SOS Kilkenny 50th Anniversary Celebrations-58.jpg"
+                        alt="50th Anniversary Celebrations 58" />
+                </div>
+
+                <div class="gallery-item wide">
+                    <img
+                        src="50th/SOS Kilkenny 50th Anniversary Celebrations-64.jpg"
+                        alt="50th Anniversary Celebrations 64" />
+                </div>
+
+                <div class="gallery-item">
+                    <img
+                        src="50th/SOS Kilkenny 50th Anniversary Celebrations-66.jpg"
+                        alt="50th Anniversary Celebrations 66" />
+                </div>
+
+                <div class="gallery-item portrait">
+                    <img
+                        src="50th/SOS Kilkenny 50th Anniversary Celebrations-81.jpg"
+                        alt="50th Anniversary Celebrations 81" />
+                </div>
+
+                <div class="gallery-item">
+                    <img
+                        src="50th/SOS Kilkenny 50th Anniversary Celebrations-84.jpg"
+                        alt="50th Anniversary Celebrations 84" />
+                </div>
+
+                <div class="gallery-item tall">
+                    <img
+                        src="50th/SOS Kilkenny 50th Anniversary Celebrations-91.jpg"
+                        alt="50th Anniversary Celebrations 91" />
+                </div>
+
+                <div class="gallery-item">
+                    <img
+                        src="50th/SOS Kilkenny 50th Anniversary Celebrations-120.jpg"
+                        alt="50th Anniversary Celebrations 120" />
+                </div>
+
+                <div class="gallery-item portrait">
+                    <img
+                        src="50th/SOS Kilkenny 50th Anniversary Celebrations-144.jpg"
+                        alt="50th Anniversary Celebrations 144" />
+                </div>
+            </div>
+        </div>
+
+        <div id="footer"></div>
+
+        <!-- Image Modal -->
+        <div class="modal fade" id="imageModal" tabindex="-1"
+            aria-labelledby="imageModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        <button type="button" class="btn-close"
+                            data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center p-0">
+                        <img id="modalImage" src alt class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+      // Image modal functionality with navigation
+      document.addEventListener('DOMContentLoaded', function() {
+        const galleryItems = document.querySelectorAll('.gallery-item img');
+        const modal = new bootstrap.Modal(document.getElementById('imageModal'));
+        const modalImage = document.getElementById('modalImage');
+        let currentImageIndex = 0;
+
+        // Add click event to all gallery images
+        galleryItems.forEach((img, index) => {
+          img.addEventListener('click', function() {
+            currentImageIndex = index;
+            modalImage.src = this.src;
+            modalImage.alt = this.alt;
+            modal.show();
+          });
+        });
+
+        // Navigation functions
+        function showNextImage() {
+          currentImageIndex = (currentImageIndex + 1) % galleryItems.length;
+          const nextImg = galleryItems[currentImageIndex];
+          modalImage.src = nextImg.src;
+          modalImage.alt = nextImg.alt;
+        }
+
+        function showPrevImage() {
+          currentImageIndex = (currentImageIndex - 1 + galleryItems.length) % galleryItems.length;
+          const prevImg = galleryItems[currentImageIndex];
+          modalImage.src = prevImg.src;
+          modalImage.alt = prevImg.alt;
+        }
+
+        // Add navigation buttons to modal
+        const modalBody = document.querySelector('.modal-body');
+        const prevBtn = document.createElement('button');
+        const nextBtn = document.createElement('button');
+        
+        prevBtn.className = 'modal-nav-btn modal-nav-prev';
+        prevBtn.innerHTML = '‹';
+        prevBtn.addEventListener('click', showPrevImage);
+        
+        nextBtn.className = 'modal-nav-btn modal-nav-next';
+        nextBtn.innerHTML = '›';
+        nextBtn.addEventListener('click', showNextImage);
+        
+        modalBody.appendChild(prevBtn);
+        modalBody.appendChild(nextBtn);
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+          if (modal._isShown) {
+            if (e.key === 'ArrowLeft') {
+              showPrevImage();
+            } else if (e.key === 'ArrowRight') {
+              showNextImage();
+            }
+          }
+        });
+      });
+    </script>
+    </body>
+</html>
