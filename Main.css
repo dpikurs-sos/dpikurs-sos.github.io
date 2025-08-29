@@ -413,11 +413,6 @@ section.py-5 {
     background: linear-gradient(45deg, #0d9488, #06b6d4);
 }
 
-.about-img:hover {
-    transform: scale(1.05);
-    transition: transform 0.3s ease-in-out;
-}
-
 .parallax-effect {
     background-attachment: fixed !important;
     background-size: cover;
